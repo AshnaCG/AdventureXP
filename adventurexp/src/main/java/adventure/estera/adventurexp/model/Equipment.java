@@ -1,4 +1,4 @@
-package adventure.estera.adventurexp.models;
+package adventure.estera.adventurexp.model;
 
 import jakarta.persistence.*;
 
@@ -12,15 +12,15 @@ public class Equipment {
     boolean availability;
 
     @Enumerated(EnumType.STRING)
-    private State state;
+    private EquipmentState equipmentState;
 
     public Equipment(){}
 
-    public Equipment(long id, String name, boolean availability, State state) {
+    public Equipment(long id, String name, boolean availability, EquipmentState equipmentState) {
         this.id = id;
         this.name = name;
         this.availability = availability;
-        this.state = state;
+        this.equipmentState = equipmentState;
     }
 
 
@@ -45,10 +45,10 @@ public class Equipment {
         this.availability = availability;
     }
 
-    public State getState() {
-        return state;
+    public EquipmentState getState() {
+        return equipmentState;
     }
-    public void setState(State state) {
-        this.state = state;
+    public void setState(EquipmentState equipmentState) {
+        this.equipmentState = equipmentState;
     }
 }

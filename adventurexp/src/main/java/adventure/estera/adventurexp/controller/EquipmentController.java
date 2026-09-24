@@ -1,6 +1,6 @@
 package adventure.estera.adventurexp.controller;
 
-import adventure.estera.adventurexp.models.Equipment;
+import adventure.estera.adventurexp.model.Equipment;
 import adventure.estera.adventurexp.service.EquipmentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

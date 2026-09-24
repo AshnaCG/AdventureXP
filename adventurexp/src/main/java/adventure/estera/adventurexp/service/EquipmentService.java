@@ -1,7 +1,7 @@
 package adventure.estera.adventurexp.service;
 
-import adventure.estera.adventurexp.exceptions.NotFoundException;
-import adventure.estera.adventurexp.models.Equipment;
+import adventure.estera.adventurexp.exception.NotFoundException;
+import adventure.estera.adventurexp.model.Equipment;
 import adventure.estera.adventurexp.repository.EquipmentRepository;
 import org.springframework.stereotype.Service;
 
