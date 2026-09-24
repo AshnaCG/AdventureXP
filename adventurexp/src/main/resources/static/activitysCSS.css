@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.side-indhold {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    padding: 2rem 0;
+}
+
+#aktivitet-liste {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+}
+
+.aktivitet-kort {
+    border: 2px solid #000;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.aktivitet-kort img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+}
+
+.kort-info {
+    padding: 1.1rem;
+    position: relative;
+}
+
+.kort-info h3 {
+    font-size: 1.8rem;
+}
+
+.badge {
+    position: absolute;
+    top: -2.6rem;
+    right: 1rem;
+    background: #f5c518;
+    color: #000;
+    font-weight: bold;
+    padding: 0.5rem 0.9rem;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.kort-info p {
+    font-size: 1rem;
+}
+
+.kort-info a {
+    color: #1a5fb4;
+    text-decoration: none;
+}
