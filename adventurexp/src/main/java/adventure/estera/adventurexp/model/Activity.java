@@ -13,8 +13,8 @@ public class Activity {
     private String equipment;
     private String imageURL;
     private int durationMinutes;
-    private int ageLimit;
-    private int heightLimit;
+    private int minAge;
+    private int minHeight;
 
 
     public Activity( String name, String description, String equipment, int durationMinutes, int age, double height) {
@@ -23,18 +23,18 @@ public class Activity {
         this.equipment = equipment;
         this.imageURL = imageURL;
         this.durationMinutes = durationMinutes;
-        this.ageLimit = ageLimit;
-        this.heightLimit= heightLimit;
+        this.minAge = minAge;
+        this.minHeight = minHeight;
     }
 
     public Activity () {}
 
-    public double getHeightLimit() {
-        return heightLimit;
+    public double getMinHeight() {
+        return minHeight;
     }
 
-    public int getAgeLimit() {
-        return ageLimit;
+    public int getMinAge() {
+        return minAge;
     }
 
     public int getDurationMinutes() {
@@ -44,6 +44,7 @@ public class Activity {
     public String getEquipment() {
         return equipment;
     }
+
     public String getImageURL() {
         return imageURL;
     }
@@ -84,11 +85,11 @@ public class Activity {
         this.durationMinutes = durationMinutes;
     }
 
-    public void setAgeLimit(int ageLimit) {
-        this.ageLimit = ageLimit;
+    public void setMinAge(int minAge) {
+        this.minAge = minAge;
     }
 
-    public void setHeightLimit(int heightLimit) {
-        this.heightLimit = heightLimit;
+    public void setMinHeight(int minHeight) {
+        this.minHeight = minHeight;
     }
 }
