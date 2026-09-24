@@ -8,6 +8,6 @@ public record ActivityDTO(
         int durationMinutes,
         int ageLimit,
         int heightLimit,
-        List<DTO> Activity
+        List<> Activity
 
 ) {}

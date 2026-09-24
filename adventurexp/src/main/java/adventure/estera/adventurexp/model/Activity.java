@@ -23,17 +23,17 @@ public class Activity {
         this.equipment = equipment;
         this.imageURL = imageURL;
         this.durationMinutes = durationMinutes;
-        this.ageLimit = age;
+        this.ageLimit = ageLimit;
         this.heightLimit= heightLimit;
     }
 
     public Activity () {}
 
-    public double getHeight() {
+    public double getHeightLimit() {
         return heightLimit;
     }
 
-    public int getAge() {
+    public int getAgeLimit() {
         return ageLimit;
     }
 
