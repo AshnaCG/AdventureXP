@@ -1,6 +1,6 @@
 package adventure.estera.adventurexp;
 
-import adventure.estera.adventurexp.enums.Rolle;
+import adventure.estera.adventurexp.enums.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +13,7 @@ public class User {
     private Long id;
     private String username;
     private String password;
-    private Rolle rolle;
+    private Role role;
 
     public User() {}
 
@@ -41,11 +41,11 @@ public class User {
         this.password = password;
     }
 
-    public Rolle getRolle() {
-        return rolle;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRolle(Rolle rolle) {
-        this.rolle = rolle;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
