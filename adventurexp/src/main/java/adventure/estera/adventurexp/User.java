@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Bruger {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,7 +15,7 @@ public class Bruger {
     private String password;
     private Rolle rolle;
 
-    public Bruger() {}
+    public User() {}
 
     public Long getId() {
         return id;
