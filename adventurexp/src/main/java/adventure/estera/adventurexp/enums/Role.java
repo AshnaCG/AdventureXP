@@ -1,6 +1,6 @@
 package adventure.estera.adventurexp.enums;
 
-public enum Rolle {
-    MEDARBEJDER,
+public enum Role {
+    EMPLOYEE,
     ADMIN
 }
