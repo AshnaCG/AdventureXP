@@ -1,0 +1,14 @@
+.header {
+    height: 80px;
+    background-color: #000000;
+}
+
+.header h1 {
+    color: #ffffff;
+}
+
+.activities {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+}
