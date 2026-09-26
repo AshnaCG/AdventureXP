@@ -1,4 +1,4 @@
-package adventure.estera.adventurexp.model;
+package adventure.adventurexp.model;
 
 import jakarta.persistence.*;
 

@@ -1,7 +1,8 @@
-package adventure.estera.adventurexp.repository;
+package adventure.adventurexp.repository;
 
-import adventure.estera.adventurexp.model.Equipment;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import adventure.adventurexp.model.Equipment;
 
 import java.util.List;
 

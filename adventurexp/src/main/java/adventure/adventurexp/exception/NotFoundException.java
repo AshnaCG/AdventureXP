@@ -1,4 +1,4 @@
-package adventure.estera.adventurexp.exception;
+package adventure.adventurexp.exception;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String message) {

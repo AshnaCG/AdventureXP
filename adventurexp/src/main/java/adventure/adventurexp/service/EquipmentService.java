@@ -1,9 +1,10 @@
-package adventure.estera.adventurexp.service;
+package adventure.adventurexp.service;
 
-import adventure.estera.adventurexp.exception.NotFoundException;
-import adventure.estera.adventurexp.model.Equipment;
-import adventure.estera.adventurexp.repository.EquipmentRepository;
 import org.springframework.stereotype.Service;
+
+import adventure.adventurexp.exception.NotFoundException;
+import adventure.adventurexp.model.Equipment;
+import adventure.adventurexp.repository.EquipmentRepository;
 
 import java.util.List;
 import java.util.Optional;

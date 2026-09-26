@@ -1,4 +1,4 @@
-package adventure.estera.adventurexp.model;
+package adventure.adventurexp.model;
 
 import jakarta.persistence.*;
 
@@ -10,8 +10,8 @@ public class WorkSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private int employee_Id;
-    private int shift_Id;
+    private int employeeId;
+    private int shiftId;
     private LocalDate date;
     //private List<T> dayPlan;
     @Enumerated(EnumType.STRING)
@@ -19,11 +19,11 @@ public class WorkSchedule {
 
     public WorkSchedule(){}
 
-    public WorkSchedule(int id, int employee_Id, int shift_Id, LocalDate date,
+    public WorkSchedule(int id, int employeeId, int shiftId, LocalDate date,
                         AttendanceState attendanceState) {
         this.id = id;
-        this.employee_Id = employee_Id;
-        this.shift_Id = shift_Id;
+        this.employeeId = employeeId;
+        this.shiftId = shiftId;
         this.date = date;
        // this.dayPlan = dayPlan;
     }
