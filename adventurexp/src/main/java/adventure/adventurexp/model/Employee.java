@@ -5,5 +5,9 @@ public class Employee {
     private AttendanceState attendanceState;
     private String name;
 
-
+public enum AttendanceState {
+    PRESENT,
+    ABSENT,
+    ON_LEAVE
+}
 }
