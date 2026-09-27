@@ -27,6 +27,10 @@ public class WorkScheduleService {
         workScheduleRepository.save(workSchedule);
     }
 
+    public void getAllWorkSchedules() {
+        workScheduleRepository.findAll();
+    }
+
     public WorkSchedule getWorkScheduleById(Long id) {
         return workScheduleRepository.findById(id).orElse(null);
     }
