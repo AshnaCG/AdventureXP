@@ -6,14 +6,15 @@ async function getActivities() {
     container.innerHTML = '';
 
     activities.forEach(a => {
-        const card = document.createElement('div');
+        const card = document.createElement('a');
         card.className = 'aktivitet-kort';
+        card.href = `detailsActivity.html?id=${a.name}`;
         card.innerHTML = `
             <img src="${a.imageURL}" alt="${a.name}">
             <div class="kort-info">
             <h3>${a.name}</h3>
             <span class="badge">${a.ageLimit}+ år</span>
-            <p>${a.durationMinutes} min · <a href="detalje.html?id=${a.name}">Se mere →</a></p>
+            <p>${a.durationMinutes} min · <span class="se-mere">se mere →</span></p>
             </div>
         `;
         container.appendChild(card);

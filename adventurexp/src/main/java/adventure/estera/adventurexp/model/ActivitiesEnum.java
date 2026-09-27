@@ -4,10 +4,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ActivitiesEnum {
-    GOCART("Gokart", "Tag plads bag rattet og kør om kap", "Hjelm, Balaclava, Kørerdragt", "image/Gokart.jpg", 30, 14, 150),
-    MINIGOLF("Minigolf", "Slå bolden i hul gennem 18 baner", "Ingen", "image/minigolf.jpg", 60, 0, 0),
-    PAINTBALL("Paintball", "Skyd malingskugler på modstanderne", "Maske, Dragt", "image/paintball.jpg", 90, 15, 0),
-    SUMOBRYDNING("Sumobrydning", "Brydekamp i oppustelige dragter", "Dragt, Hjelm", "image/sumobrydning.jpg", 30, 10, 0);
+    GOCART("Gocart", "Tag plads bag rattet og kør om kap på vores asfaltbane med dæk-barrierer hele vejen rundt. \n\n" +
+            "Før start får alle en kort sikkersinstruktion, og en medarbejder følger heatet fra banekanten", "Hjelm, Balaclava, Kørerdragt", "image/Gokart.jpg", 30, 14, 150),
+    MINIGOLF("Minigolf", "18 huller med borge, broer og forhindringer. Banen passer til hele familien. \n\n" +
+            "I går selv rundt i jeres eget tempo og tæller slag på scorekortet", "Ingen", "image/minigolf.jpg", 60, 0, 0),
+    PAINTBALL("Paintball", "Hold mod hold på en bane med skjul og barrikader. Prisen er pr. person og inkluderer udstyr. \n\n" +
+            "Ekstra kugler kan købes på dagen og betales efter aktiviteten.", "Maske, Dragt", "image/paintball.jpg", 90, 15, 0),
+    SUMOBRYDNING("Sumobrydning", "Træk i de polstrede dragter og prøv at skubbe modstanderen ud af ringen. \n\n" +
+            "Sjovt til polterabend, fødselsdage og teambuilding", "Dragt, Hjelm", "image/sumobrydning.jpg", 30, 10, 0);
 
     private final String name;
     private final String description;
