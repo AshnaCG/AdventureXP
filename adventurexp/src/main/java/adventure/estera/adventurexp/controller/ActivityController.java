@@ -1,4 +1,4 @@
-package adventure.estera.adventurexp.Controller;
+package adventure.estera.adventurexp.controller;
 
 import adventure.estera.adventurexp.model.ActivitiesEnum;
 import org.springframework.web.bind.annotation.*;
