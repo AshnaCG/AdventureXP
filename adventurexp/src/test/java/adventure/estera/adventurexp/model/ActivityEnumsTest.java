@@ -18,7 +18,7 @@ public class ActivityEnumsTest {
     @Test
     @DisplayName("Gocart har de rigtige værdier")
         void gocartValues() {
-        ActivitiesEnum gokart = ActivitiesEnum.GOCART;
+        ActivitiesEnum gokart = ActivitiesEnum.GOKART;
 
         assertEquals("Gokart", gokart.getName());
         assertEquals(30, gokart.getDurationMinutes());
