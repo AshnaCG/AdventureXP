@@ -19,7 +19,8 @@ public class WorkScheduleDTOService{
 
 
     public workScheduleDTO createWorkScheduleDTO(){
-        return WorkScheduleDTO();
+        
+        return new WorkScheduleDTO();
     }
 
 }

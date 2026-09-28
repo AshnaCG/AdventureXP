@@ -27,6 +27,14 @@ public class WorkSchedule {
         this.date = date;
        // this.dayPlan = dayPlan;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
    public enum AttendanceState {
         ACTIVE,
         SICK,
