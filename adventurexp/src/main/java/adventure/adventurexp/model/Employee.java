@@ -2,12 +2,18 @@ package adventure.adventurexp.model;
 
 public class Employee {
     private int id;
-    private AttendanceState attendanceState;
     private String name;
 
-public enum AttendanceState {
-    PRESENT,
-    ABSENT,
-    ON_LEAVE
-}
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
 }

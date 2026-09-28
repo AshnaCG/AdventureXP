@@ -1,10 +1,10 @@
 package adventure.adventurexp.dto;
-
+import adventure.adventurexp.model.Employee;
+import adventure.adventurexp.model.Shift;
 
 public record WorkScheduleDTO(
-    Long id,
-    String dayOfWeek,
-    String startTime,
-    String endTime;
-    String name;
-) {}
+     Long id,
+     Shift shift,
+     Employee employee){
+
+     }
