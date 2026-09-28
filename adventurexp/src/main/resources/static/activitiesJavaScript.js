@@ -13,7 +13,7 @@ async function getActivities() {
             <img src="${a.imageURL}" alt="${a.name}">
             <div class="kort-info">
             <h3>${a.name}</h3>
-            <span class="badge">${a.ageLimit}+ år</span>
+            <span class="badge">${a.minAge}+ år</span>
             <p>${a.durationMinutes} min · <span class="se-mere">se mere →</span></p>
             </div>
         `;

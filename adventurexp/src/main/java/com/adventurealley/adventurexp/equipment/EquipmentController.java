@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Adventure/equipment")
+@RequestMapping("/adventure/equipment")
 public class EquipmentController {
 
     private final EquipmentService equipmentService;
@@ -15,9 +15,14 @@ public class EquipmentController {
         this.equipmentService = equipmentService;
     }
 
+    @GetMapping("/overview")
+    public ResponseEntity<List<EquipmentOverview>> getOverview() {
+        return ResponseEntity.ok(equipmentService.getOverview());
+    }
+
     @GetMapping
     public ResponseEntity<List<Equipment>> getAllEquipment() {
-            return ResponseEntity.ok(equipmentService.getAll());
+        return ResponseEntity.ok(equipmentService.getAll());
     }
 
     @PostMapping
@@ -26,7 +31,7 @@ public class EquipmentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Equipment> getEquipmentById(@PathVariable Long id) {
+    public ResponseEntity<Equipment> getEquipmentById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(equipmentService.findById(id));
     }
 }

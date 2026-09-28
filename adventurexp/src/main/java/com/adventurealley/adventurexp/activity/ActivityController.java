@@ -1,5 +1,6 @@
 package com.adventurealley.adventurexp.activity;
 
+import com.adventurealley.adventurexp.exception.NotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -8,13 +9,20 @@ import java.util.List;
 @RequestMapping("/adventure/activity")
 public class ActivityController {
 
+    private final ActivityRepository activityRepository;
+
+    public ActivityController(ActivityRepository activityRepository) {
+        this.activityRepository = activityRepository;
+    }
+
     @GetMapping
-    public List<ActivityEnum> getAllActivities() {
-        return List.of(ActivityEnum.values());
+    public List<Activity> getAllActivities() {
+        return activityRepository.findAll();
     }
 
     @GetMapping("/{name}")
-    public ActivityEnum getActivity(@PathVariable String name) {
-        return ActivityEnum.valueOf(name.toUpperCase());
+    public Activity getActivity(@PathVariable("name") String name) {
+        return activityRepository.findByNameIgnoreCase(name)
+                .orElseThrow(() -> new NotFoundException("Activity not found: " + name));
     }
 }
