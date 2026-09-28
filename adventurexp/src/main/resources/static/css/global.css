@@ -1,7 +1,14 @@
 :root {
---color-background-white:#D9DBDC;
---color-box-white: #FFFFFF;
---color-header-black:#132639;   
---color-button-blue:#1C98E0;
---color-button-yellow:#FEC62C;
+  --color-background-white: #f5f6f8;
+  --color-box-white: #ffffff;
+  --color-header-black: #0d1b2a;
+  --color-sidebar-black: #132639;
+  --color-button-blue: #1c98e0;
+  --color-button-yellow: #fec62c;
+}
+body {
+  background-color: var(--color-background-white);
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 20px;
 }
