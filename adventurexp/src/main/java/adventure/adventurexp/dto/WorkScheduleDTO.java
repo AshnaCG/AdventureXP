@@ -4,7 +4,8 @@ import adventure.adventurexp.model.Shift;
 
 public record WorkScheduleDTO(
      Long id,
-     Shift shift,
-     Employee employee){
+     long employeeId,
+     LocalDateTime shiftStart,,
+     LocalDateTime shiftEnd){
 
      }

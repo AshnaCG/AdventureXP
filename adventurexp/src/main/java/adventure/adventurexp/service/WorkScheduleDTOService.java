@@ -17,9 +17,9 @@ public class WorkScheduleDTOService{
         return employee.getShift();
     }
 
+
     public workScheduleDTO createWorkScheduleDTO(){
-        getWorkScheduleDataId(new Employee());
-        getWorkScheduleDataName(new Employee());
+        return WorkScheduleDTO();
     }
 
 }
