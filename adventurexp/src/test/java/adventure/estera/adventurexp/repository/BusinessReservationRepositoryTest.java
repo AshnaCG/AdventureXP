@@ -1,5 +1,6 @@
 package adventure.estera.adventurexp.repository;
 
+import adventure.estera.adventurexp.model.BusinessReservation;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
@@ -30,7 +31,7 @@ public class BusinessReservationRepositoryTest {
                 "Firma A", "Anders Andersen", "12345678",
                 LocalDateTime.of(2026, 11, 20, 10, 0), 40));
 
-        BusinessReservation found = repository.findByID(saved.getId()).orElseThrow();
+        BusinessReservation found = repository.findById(saved.getId()).orElseThrow();
 
         assertEquals("Firma A", found.getCompanyName());
         assertEquals("Anders Andersen", found.getContactPerson());
@@ -55,7 +56,7 @@ public class BusinessReservationRepositoryTest {
                 "Firma A", "Anders", "11111111",
                 LocalDateTime.of(2026, 11, 20, 10, 0), 40));
 
-        repository.deleteId(saved.getId());
+        repository.deleteById(saved.getId());
 
         assertTrue(repository.findById(saved.getId()).isEmpty());
     }
