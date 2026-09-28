@@ -1,6 +1,6 @@
 package com.adventurealley.adventurexp.equipment;
 
-public record EquipmentOverview(
+public record EquipmentOverviewDTO(
         String activity,
         String equipment,
         int total,

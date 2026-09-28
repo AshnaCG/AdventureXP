@@ -35,7 +35,7 @@ public class EquipmentService {
     }
 
 
-    public List<EquipmentOverview> getOverview() {
+    public List<EquipmentOverviewDTO> getOverview() {
         // nøgle = "Gokart|Hjelm", værdi = [total, ledige, i stykker]
         Map<String, int []> counts = new LinkedHashMap<>();
 
@@ -48,10 +48,10 @@ public class EquipmentService {
             if (e.getState() == State.BROKEN) c[2]++;
         }
 
-        List<EquipmentOverview> result = new ArrayList<>();
+        List<EquipmentOverviewDTO> result = new ArrayList<>();
         counts.forEach((key, c) -> {
             String[] parts = key.split("\\|");
-            result.add(new EquipmentOverview(parts[0], parts[1], c[0], c[1], c[2]));
+            result.add(new EquipmentOverviewDTO(parts[0], parts[1], c[0], c[1], c[2]));
         });
         return result;
     }
