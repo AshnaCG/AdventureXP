@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Medarbejder</title>
+    <title>Admin</title>
 </head>
 <body>
 <main>
-    <h1>Medarbejder</h1>
+    <h1>Admin</h1>
     <p>Logget ind som <span id="username"></span></p>
-    <a href="admin.html" data-role="ADMIN">Gå til admin</a>
+    <nav>
+        <a href="employee.html">Medarbejderside</a>
+    </nav>
     <button id="logout">Log ud</button>
 </main>
-<script type="module" src="auth/employee.js"></script>
+<script type="module" src="auth/admin.js"></script>
 </body>
 </html>

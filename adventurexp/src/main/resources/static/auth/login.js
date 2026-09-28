@@ -21,7 +21,6 @@ loginform.addEventListener("submit", async (event) => {
 
     try {
         const response = await loginUser(credentials);
-        const data = await response.json();
 
         if (response.status === 401) {
             loginError.textContent = "Forkert brugernavn eller adgangskode";
@@ -34,12 +33,20 @@ loginform.addEventListener("submit", async (event) => {
             return;
         }
 
+        const data = await response.json();
+        
         loginError.hidden = true;
 
         sessionStorage.setItem("username", data.username);
         sessionStorage.setItem("role", data.role);
 
-        window.location.href = "employee.html";
+        if (data.role === "ADMIN") {
+            window.location.href = "admin.html"
+        }
+        if (data.role === "EMPLOYEE") {
+            window.location.href = "employee.html";
+        }
+
     } catch (error) {
         loginError.textContent = "Kunne ikke kontakte serveren";
         loginError.hidden = false;
