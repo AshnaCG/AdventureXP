@@ -48,22 +48,22 @@ public class InitData implements CommandLineRunner {
 
         Activity gokart = new Activity("Gokart", "Tag plads bag rattet og kør om kap på vores asfaltbane med dæk-barrierer hele vejen rundt.\n\n" +
                 "Før start får alle en kort sikkerhedsinstruktion, og en medarbejder følger heatet fra banekanten",
-                "image/Gokart.jpg", 30, 14, 150);
+                "/image/Gokart.jpg", 30, 14, 150);
 
         Activity minigolf = new Activity("Minigolf",
                 "18 huller med borge, broer og forhindringer. Banen passer til hele familien.\n\n" +
                         "I går selv rundt i jeres eget tempo og tæller slag på scorekortet",
-                "image/minigolf.jpg", 60, 0, 0);
+                "/image/minigolf.jpg", 60, 0, 0);
 
         Activity paintball = new Activity("Paintball",
                 "Hold mod hold på en bane med skjul og barrikader. Prisen er pr. person og inkluderer udstyr.\n\n" +
                         "Ekstra kugler kan købes på dagen og betales efter aktiviteten.",
-                "image/paintball.jpg", 90, 15, 0);
+                "/image/paintball.jpg", 90, 15, 0);
 
         Activity sumo = new Activity("Sumobrydning",
                 "Træk i de polstrede dragter og prøv at skubbe modstanderen ud af ringen.\n\n" +
                         "Sjovt til polterabend, fødselsdage og teambuilding",
-                "image/sumobrydning.jpg", 30, 10, 0);
+                "/image/sumobrydning.jpg", 30, 10, 0);
 
         activityRepository.saveAll(List.of(gokart, minigolf, paintball, sumo));
 
