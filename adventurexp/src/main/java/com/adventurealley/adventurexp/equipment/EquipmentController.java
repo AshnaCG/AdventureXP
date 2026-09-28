@@ -16,7 +16,7 @@ public class EquipmentController {
     }
 
     @GetMapping("/overview")
-    public ResponseEntity<List<EquipmentOverview>> getOverview() {
+    public ResponseEntity<List<EquipmentOverviewDTO>> getOverview() {
         return ResponseEntity.ok(equipmentService.getOverview());
     }
 
