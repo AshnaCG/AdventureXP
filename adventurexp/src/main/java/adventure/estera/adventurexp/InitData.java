@@ -1,6 +1,8 @@
 package adventure.estera.adventurexp;
 
 import adventure.estera.adventurexp.enums.Role;
+import adventure.estera.adventurexp.model.User;
+import adventure.estera.adventurexp.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

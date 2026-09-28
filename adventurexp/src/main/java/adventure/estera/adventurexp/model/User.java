@@ -1,4 +1,4 @@
-package adventure.estera.adventurexp;
+package adventure.estera.adventurexp.model;
 
 import adventure.estera.adventurexp.enums.Role;
 import jakarta.persistence.*;
