@@ -3,8 +3,7 @@ package com.adventurealley.adventurexp.equipment;
 import com.adventurealley.adventurexp.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class EquipmentService {
@@ -33,5 +32,27 @@ public class EquipmentService {
 
     public void deleteById(Long id) {
         equipmentRepository.deleteById(id);
+    }
+
+
+    public List<EquipmentOverviewDTO> getOverview() {
+        // nøgle = "Gokart|Hjelm", værdi = [total, ledige, i stykker]
+        Map<String, int []> counts = new LinkedHashMap<>();
+
+        for (Equipment e : equipmentRepository.findAll()) {
+            String activityName = e.getActivity() == null ? "Ingen aktivitet" : e.getActivity().getName();
+            String key = activityName + "|" + e.getName();
+            int[] c = counts.computeIfAbsent(key, k -> new int[3]);
+            c[0]++;
+            if (e.isAvailability() && e.getState() == State.OK) c[1]++;
+            if (e.getState() == State.BROKEN) c[2]++;
+        }
+
+        List<EquipmentOverviewDTO> result = new ArrayList<>();
+        counts.forEach((key, c) -> {
+            String[] parts = key.split("\\|");
+            result.add(new EquipmentOverviewDTO(parts[0], parts[1], c[0], c[1], c[2]));
+        });
+        return result;
     }
 }
