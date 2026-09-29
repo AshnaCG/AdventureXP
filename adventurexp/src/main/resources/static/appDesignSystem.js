@@ -14,5 +14,3 @@ activities.forEach((activity) => {
     card.textContent = activity;
     activitiesList.appendChild(card);
 });
-
-console.log("hbcd");
