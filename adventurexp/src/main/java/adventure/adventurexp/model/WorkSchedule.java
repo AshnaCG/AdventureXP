@@ -10,8 +10,8 @@ public class WorkSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private int employeeId;
-    private int shiftId;
+    private long employeeId;
+    private long shiftId;
     private LocalDate date;
     //private List<T> dayPlan;
     @Enumerated(EnumType.STRING)
@@ -19,7 +19,7 @@ public class WorkSchedule {
 
     public WorkSchedule(){}
 
-    public WorkSchedule(int id, int employeeId, int shiftId, LocalDate date,
+    public WorkSchedule(long id, long employeeId, long shiftId, LocalDate date,
                         AttendanceState attendanceState) {
         this.id = id;
         this.employeeId = employeeId;
@@ -31,8 +31,14 @@ public class WorkSchedule {
     public void setId(long id) {
         this.id = id;
     }
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(long employeeId) {
         this.employeeId = employeeId;
+    }
+    public long getId() {
+        return id;
+    }
+    public long getEmployeeId() {
+        return employeeId;
     }
 
    public enum AttendanceState {
