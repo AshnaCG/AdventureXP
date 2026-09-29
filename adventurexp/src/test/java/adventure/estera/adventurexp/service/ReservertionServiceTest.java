@@ -11,7 +11,7 @@ public class ReservertionServiceTest {
 
     @Test
     void shouldCreateReservation() {
-        //Arrage
+        //Arrange
         ReservationRepository repo = mock(ReservationRepository.class);
         ReservationService service = new ReservationService(repo);
         Reservation reservation = new Reservation();
