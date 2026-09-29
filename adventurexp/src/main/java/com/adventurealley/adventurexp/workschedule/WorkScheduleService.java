@@ -1,9 +1,6 @@
-package adventure.adventurexp.service;
+    package com.adventurealley.adventurexp.workschedule;
 
-import org.springframework.stereotype.Service;
-
-import adventure.adventurexp.model.WorkSchedule;
-import adventure.adventurexp.repository.WorkScheduleRepository;
+    import org.springframework.stereotype.Service;
 
 @Service
 public class WorkScheduleService {

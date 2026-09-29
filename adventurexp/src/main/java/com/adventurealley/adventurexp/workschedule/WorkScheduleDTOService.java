@@ -1,6 +1,6 @@
-package adventure.adventurexp.service;
+    package com.adventurealley.adventurexp.workschedule;
 
-import adventure.adventurexp.model.Employee;
+    import com.adventurealley.adventurexp.employee.Employee;
 
 public class WorkScheduleDTOService{
 

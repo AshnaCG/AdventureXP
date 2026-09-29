@@ -1,4 +1,4 @@
-package adventure.adventurexp.dto;
+package com.adventurealley.adventurexp.workschedule;
 import java.time.LocalDateTime;
 
 

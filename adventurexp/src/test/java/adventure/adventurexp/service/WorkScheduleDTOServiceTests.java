@@ -1,7 +1,9 @@
 package adventure.adventurexp.service;
 
-import adventure.adventurexp.dto.WorkScheduleDTO;
-import adventure.adventurexp.model.WorkSchedule;
+import com.adventurealley.adventurexp.workschedule.WorkScheduleDTO;
+import com.adventurealley.adventurexp.workschedule.WorkScheduleDTOService;
+
+import com.adventurealley.adventurexp.workschedule.WorkSchedule;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,4 +28,4 @@ public class WorkScheduleDTOServiceTests {
         assertEquals(1L, result.id());
         assertEquals(42, result.employeeId());
     }
-}asdfasdfasdf 
+}

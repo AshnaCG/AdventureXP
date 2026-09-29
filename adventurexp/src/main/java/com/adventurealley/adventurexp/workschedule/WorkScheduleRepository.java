@@ -1,6 +1,6 @@
-package adventure.adventurexp.repository;
+package com.adventurealley.adventurexp.workschedule;
 import org.springframework.data.jpa.repository.JpaRepository;
-import adventure.adventurexp.model.WorkSchedule;
+import com.adventurealley.adventurexp.workschedule.WorkSchedule;
 
 public interface WorkScheduleRepository  extends JpaRepository<WorkSchedule, Long> {
 }
