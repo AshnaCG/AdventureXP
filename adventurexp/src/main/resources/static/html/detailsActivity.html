@@ -7,14 +7,45 @@
 </head>
 <body>
 
-    <div class="side-indhold">
-        <a href="activities.html" class="tilbage-link">← Alle aktiviteter</a>
+<div class="side-indhold">
+    <a href="activities.html" class="tilbage-link">← Alle aktiviteter</a>
 
-        <div id="aktivitet-detalje">
+    <p id="activity-error" hidden></p>
+
+    <div id="activity-detail" hidden>
+        <img id="activity-image" class="detalje-billede">
+
+        <div class="detalje-indhold">
+            <div class="detalje-tekst">
+                <span class="label">AKTIVITET</span>
+                <h1 id="activity-name"></h1>
+                <p id="activity-description"></p>
+            </div>
+            <div class="fakta-boks">
+                <h3>FAKTA</h3>
+                <div class="fakta-linje">
+                    <span>Varighed</span>
+                    <strong id="activity-duration"></strong>
+                </div>
+                <div class="fakta-linje">
+                    <span>Aldersgrænse</span>
+                    <strong id="activity-age"></strong>
+                </div>
+                <div class="fakta-linje">
+                    <span>Højdegrænse</span>
+                    <strong id="activity-height"></strong>
+                </div>
+
+                <h4>UDSTYR</h4>
+                <ul id="activity-equipment"></ul>
+
+                <button class="book-knap">BOOK</button>
+            </div>
         </div>
     </div>
+</div>
 
-    <script src="../js/detailsActivityJavaScript.js"></script>
+<script src="../js/detailsActivityJavaScript.js"></script>
 
 </body>
 </html>
