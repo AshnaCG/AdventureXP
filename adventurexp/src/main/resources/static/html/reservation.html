@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret aktivitets reservation</title>
+</head>
+<body>
+
+<h1>Reservèr aktivitet</h1>
+
+<form id="reservationsForm">
+
+    <label for="activity">Aktiviter:</label>
+
+    <select id="activity" name="activity" required>
+        <option value="">Vælg en aktivitet</option>
+    </select>
+
+    <label for="dateTime">Tidspunkt</label>
+    <input type="datetime-local" id="dateTime" name="dateTime">
+
+    <label for="firstName">Fornavn</label>
+    <input type="text" id="firstName" name="firstName">
+
+    <label for="lastName">Efternavn</label>
+    <input type="text" id="lastName" name="lastName">
+
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email">
+
+    <label for="phoneNumber">Telefonnummer</label>
+    <input type="text" id="phoneNumber" name="phoneNumber">
+
+    <button type="submit">Bekræft reservation</button>
+
+</form>
+
+<script src="reservation.js"></script>
+
+</body>
+</html>
