@@ -3,7 +3,7 @@ package adventure.estera.adventurexp.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Activity {
+public class git Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

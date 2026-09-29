@@ -1,4 +1,4 @@
-package adventure.estera.adventurexp.Controller;
+package adventure.estera.adventurexp.controller;
 
 import adventure.estera.adventurexp.models.Equipment;
 import adventure.estera.adventurexp.service.EquipmentService;

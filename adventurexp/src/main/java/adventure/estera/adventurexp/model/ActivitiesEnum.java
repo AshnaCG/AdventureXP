@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ActivitiesEnum {
-    GOCART("Gocart", "Tag plads bag rattet og kør om kap på vores asfaltbane med dæk-barrierer hele vejen rundt. \n\n" +
+    GOKART("Gokart", "Tag plads bag rattet og kør om kap på vores asfaltbane med dæk-barrierer hele vejen rundt. \n\n" +
             "Før start får alle en kort sikkersinstruktion, og en medarbejder følger heatet fra banekanten", "Hjelm, Balaclava, Kørerdragt", "image/Gokart.jpg", 30, 14, 150),
     MINIGOLF("Minigolf", "18 huller med borge, broer og forhindringer. Banen passer til hele familien. \n\n" +
             "I går selv rundt i jeres eget tempo og tæller slag på scorekortet", "Ingen", "image/minigolf.jpg", 60, 0, 0),
