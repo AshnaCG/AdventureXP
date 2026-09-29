@@ -85,3 +85,8 @@ body {
         flex-direction: column;
     }
 }
+
+.selected {
+    background-color: #fec62c;
+    color: black;
+}
