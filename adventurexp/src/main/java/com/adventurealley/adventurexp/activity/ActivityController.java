@@ -1,6 +1,7 @@
 package com.adventurealley.adventurexp.activity;
 
-import com.adventurealley.adventurexp.exception.NotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,20 +10,35 @@ import java.util.List;
 @RequestMapping("/adventure/activity")
 public class ActivityController {
 
-    private final ActivityRepository activityRepository;
+    private final ActivityService activityService;
 
-    public ActivityController(ActivityRepository activityRepository) {
-        this.activityRepository = activityRepository;
+    public ActivityController(ActivityService activityService) {
+        this.activityService = activityService;
     }
 
     @GetMapping
     public List<Activity> getAllActivities() {
-        return activityRepository.findAll();
+        return activityService.getAll();
     }
 
     @GetMapping("/{name}")
     public Activity getActivity(@PathVariable("name") String name) {
-        return activityRepository.findByNameIgnoreCase(name)
-                .orElseThrow(() -> new NotFoundException("Activity not found: " + name));
+        return activityService.findByName(name);
+    }
+
+    @PostMapping
+    public ResponseEntity<Activity> createActivity(@RequestBody Activity activity) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(activityService.create(activity));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Activity> updateActivity(@PathVariable("id") Long id, @RequestBody Activity activity) {
+        return ResponseEntity.ok(activityService.update(id, activity));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteActivity(@PathVariable("id") Long id) {
+        activityService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -11,6 +11,46 @@
     <a href="admin.html" data-role="ADMIN">Gå til admin</a>
     <button id="logout">Log ud</button>
 
+    <h2>Aktiviteter</h2>
+    <table id="aktivitet-tabel">
+        <thead>
+        <tr><th>Navn</th><th>Varighed (min)</th><th>Min. alder</th><th>Min. højde (cm)</th><th></th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h3 id="aktivitet-form-titel">Opret aktivitet</h3>
+    <form id="aktivitet-form">
+        <input type="hidden" id="aktivitet-id">
+        <p>
+            <label for="aktivitet-navn">Navn</label><br>
+            <input type="text" id="aktivitet-navn" required>
+        </p>
+        <p>
+            <label for="aktivitet-beskrivelse">Beskrivelse</label><br>
+            <textarea id="aktivitet-beskrivelse" rows="4" cols="50" maxlength="1000"></textarea>
+        </p>
+        <p>
+            <label for="aktivitet-billede">Billede-URL</label><br>
+            <input type="text" id="aktivitet-billede" placeholder="/image/gokart.jpg">
+        </p>
+        <p>
+            <label for="aktivitet-varighed">Varighed (minutter)</label><br>
+            <input type="number" id="aktivitet-varighed" min="1" required>
+        </p>
+        <p>
+            <label for="aktivitet-alder">Aldersgrænse (år)</label><br>
+            <input type="number" id="aktivitet-alder" min="0" value="0" required>
+        </p>
+        <p>
+            <label for="aktivitet-hoejde">Minimumshøjde (cm)</label><br>
+            <input type="number" id="aktivitet-hoejde" min="0" step="1" value="0" required>
+        </p>
+        <button type="submit" id="aktivitet-gem">Opret</button>
+        <button type="button" id="aktivitet-annuller" hidden>Annuller redigering</button>
+        <p id="aktivitet-besked" role="status"></p>
+    </form>
+
     <h2>Udstyr</h2>
     <table id="udstyr-tabel">
         <thead>
