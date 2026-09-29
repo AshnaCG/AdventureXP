@@ -28,7 +28,7 @@ jobs:
           sleep 20
 
           # Test the application endpoint (Tjek endpoint)
-          curl -f http://localhost:8090/actuator/health || exit 1
+          curl -f http://localhost:ENDPOINT || exit 1
 
           # Stop and remove the container
           docker compose down
