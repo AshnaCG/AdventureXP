@@ -3,7 +3,11 @@ package com.adventurealley.adventurexp.workschedule;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-// import java.util.List;
+
+import com.adventurealley.adventurexp.employee.Employee;
+import com.adventurealley.adventurexp.workschedule.WorkSchedule.AttendanceState;
+
+import com.adventurealley.adventurexp.employee.Employee;
 @Entity
 public class WorkSchedule {
 
@@ -13,9 +17,16 @@ public class WorkSchedule {
     private long employeeId;
     private long shiftId;
     private LocalDate date;
-    //private List<T> dayPlan;
     @Enumerated(EnumType.STRING)
     private AttendanceState attendanceState;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "shift_id", nullable = false)
+    private Shift shift;
 
     public WorkSchedule(){}
 
@@ -25,20 +36,23 @@ public class WorkSchedule {
         this.employeeId = employeeId;
         this.shiftId = shiftId;
         this.date = date;
-       // this.dayPlan = dayPlan;
+        this.attendanceState = attendanceState;
     }
 
     public void setId(long id) {
         this.id = id;
     }
-    public void setEmployeeId(long employeeId) {
-        this.employeeId = employeeId;
-    }
+
     public long getId() {
         return id;
     }
-    public long getEmployeeId() {
-        return employeeId;
+    
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Employee getEmployee() {
+        return employee;
     }
 
    public enum AttendanceState {

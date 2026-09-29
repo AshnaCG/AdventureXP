@@ -1,8 +1,31 @@
 package com.adventurealley.adventurexp.employee;
 
+import com.adventurealley.adventurexp.workschedule.WorkSchedule;
+import com.adventurealley.adventurexp.workschedule.Shift;
+import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
     private String name;
+
+    @OneToMany(mappedBy = "employee")
+    private List<WorkSchedule> workSchedules = new ArrayList<>();
+
+    public list<WorkSchedule> getWorkSchedules() {
+        return workSchedules;
+    }
+
+    protected Employee() {
+    }
+
     private Role role;
 
     public enum Role {
@@ -10,7 +33,7 @@ public class Employee {
     ADMIN
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -22,7 +45,7 @@ public class Employee {
         this.name = name;
     }
 
-    public void getShift() {
-
+    public Shift getShift() {
+        return Shift;
     }
 }

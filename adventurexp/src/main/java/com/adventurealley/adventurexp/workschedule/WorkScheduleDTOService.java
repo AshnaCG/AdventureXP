@@ -1,26 +1,23 @@
-    package com.adventurealley.adventurexp.workschedule;
+package com.adventurealley.adventurexp.workschedule;
 
-    import com.adventurealley.adventurexp.employee.Employee;
+import com.adventurealley.adventurexp.employee.Employee;
 
-public class WorkScheduleDTOService{
+public class WorkScheduleDTOService {
 
-    
-
-    public int getWorkScheduleDataId(Employee employee){
+    public int getWorkScheduleDataId(Employee employee) {
         return employee.getId();
     }
 
-
-    public String getWorkScheduleDataName(Employee employee){
+    public String getWorkScheduleDataName(Employee employee) {
         return employee.getName();
     }
 
-    public shift getWorkScheduleDataShiftById(Employee employee){
+    public Shift getWorkScheduleDataShiftById(Employee employee) {
+        employee.getShift();
         return employee.getShift();
     }
 
-
-    public workScheduleDTO createWorkScheduleDTO(WorkSchedule workSchedule){
+    public workScheduleDTO createWorkScheduleDTO(WorkSchedule workSchedule) {
         workSchedule.getId();
         workSchedule.getEmployeeId();
 
