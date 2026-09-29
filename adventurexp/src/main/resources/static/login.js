@@ -39,8 +39,15 @@ loginform.addEventListener("submit", async (event) => {
         sessionStorage.setItem("username", data.username);
         sessionStorage.setItem("role", data.role);
 
-        window.location.href = "employee.html";
-    } catch (error) {
+        switch (data.role) {
+            case "RESERVATION":
+                window.location.href = "reservation.html";
+                break;
+            default:
+                window.location.href = "employee.html";
+        }
+    }       catch (error) {
+
         loginError.textContent = "Kunne ikke kontakte serveren";
         loginError.hidden = false;
     }

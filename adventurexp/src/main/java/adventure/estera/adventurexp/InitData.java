@@ -19,8 +19,11 @@ public class InitData implements CommandLineRunner {
         }
         User employee = User.create("Employee", "1234", Role.EMPLOYEE);
         User admin = User.create("Admin", "1234", Role.ADMIN);
+        User reservation = User.create("Reservation", "1234", Role.RESERVATION);
+
 
         userRepository.save(employee);
         userRepository.save(admin);
+        userRepository.save(reservation);
     }
 }

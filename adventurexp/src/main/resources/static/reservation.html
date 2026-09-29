@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>AdventureXP - Reservation</title>
+</head>
+<body>
+
+<h1>Ny reservation</h1>
+
+<form id="reservation-form">
+
+    <label for="type">Type</label>
+    <select id="type" name="type">
+        <option value="WHOLE_CENTER">Hele centret</option>
+        <option value="PRIVATE">Privat</option>
+    </select>
+
+
+    <label for="activity">Aktivitet</label>
+    <select id="activity" name="activity">
+        <option value="">Ingen (hele centret)</option>
+        <option value="GOKART">Gokart</option>
+        <option value="MINIGOLF">Minigolf</option>
+        <option value="PAINTBALL">Paintball</option>
+        <option value="SUMOBRYDNING">Sumobrydning</option>
+    </select>
+
+
+    <label for="participants">Antal personer</label>
+    <input type="number" id="participants" name="participants" min="40" required>
+
+    <label for="startTime">Dato og tid</label>
+    <input type="datetime-local" id="startTime" name="startTime" required>
+
+    <label for="customerName">Kundens navn</label>
+    <input type="text" id="customerName" name="customerName" required>
+
+    <label for="customerEmail">E-mail</label>
+    <input type="email" id="customerEmail" name="customerEmail">
+
+    <label for="customerPhoneNumber">Telefon</label>
+    <input type="tel" id="customerPhoneNumber" name="customerPhoneNumber">
+
+    <button type="submit">Opret reservation</button>
+</form>
+
+<p id="besked" hidden></p>
+
+
+<script src="reservation.js"></script>
+
+</body>
+</html>
