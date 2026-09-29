@@ -4,6 +4,8 @@ import adventure.adventurexp.model.Employee;
 
 public class WorkScheduleDTOService{
 
+    
+
     public int getWorkScheduleDataId(Employee employee){
         return employee.getId();
     }
@@ -18,9 +20,14 @@ public class WorkScheduleDTOService{
     }
 
 
-    public workScheduleDTO createWorkScheduleDTO(){
-        getWorkScheduleId
-        return new WorkScheduleDTO();
+    public workScheduleDTO createWorkScheduleDTO(WorkSchedule workSchedule){
+        workSchedule.getId();
+        workSchedule.getEmployeeId();
+
+        WorkScheduleDTO workScheduleDTO = new WorkScheduleDTO(
+                workSchedule.getId(),
+                workSchedule.getEmployeeId());
+        return workScheduleDTO;
     }
 
 }
