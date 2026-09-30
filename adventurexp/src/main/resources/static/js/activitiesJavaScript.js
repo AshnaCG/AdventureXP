@@ -11,7 +11,7 @@ async function getActivities() {
         }
         const activities = await response.json();
 
-        const container = document.querySelector("#aktivitet-liste");
+        const container = document.querySelector("#activity-list");
         container.innerHTML = "";
 
         for (const activity of activities) {
@@ -27,7 +27,7 @@ async function getActivities() {
 
 function createActivityCard(activity) {
     const card = document.createElement("a");
-    card.className = "aktivitet-kort";
+    card.className = "activity-card";
     card.href = `detailsActivity.html?id=${activity.name}`;
 
     const image = document.createElement("img");
@@ -35,7 +35,7 @@ function createActivityCard(activity) {
     image.alt = activity.name;
 
     const info = document.createElement("div");
-    info.className = "kort-info";
+    info.className = "card-info";
 
     const title = document.createElement("h3");
     title.textContent = activity.name;
@@ -48,7 +48,7 @@ function createActivityCard(activity) {
     details.textContent = `${activity.durationMinutes} min · `;
 
     const seeMore = document.createElement("span");
-    seeMore.className = "se-mere";
+    seeMore.className = "see-more";
     seeMore.textContent = "se mere →";
     details.appendChild(seeMore);
 

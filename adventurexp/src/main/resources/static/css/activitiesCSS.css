@@ -7,7 +7,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.side-indhold {
+.page-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2.5rem;
@@ -19,13 +19,13 @@ h1 {
     padding: 2rem 0;
 }
 
-#aktivitet-liste {
+#activity-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.8rem;
 }
 
-.aktivitet-kort {
+.activity-card {
     border: 2px solid #000;
     border-radius: 4px;
     overflow: hidden;
@@ -36,31 +36,31 @@ h1 {
     transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
 }
 
-.se-mere {
+.see-more {
     color: #1a5fb4;
     text-decoration: none;
 }
 
-.aktivitet-kort img {
+.activity-card img {
     width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
     display: block;
 }
 
-.aktivitet-kort:hover {
+.activity-card:hover {
     border-color: #f5c518;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     transform: translateY(-4px);
 }
 
-.kort-info {
+.card-info {
     padding: 1.1rem;
     position: relative;
 }
 
-.kort-info h3 {
+.card-info h3 {
     font-size: 1.8rem;
 }
 
@@ -76,11 +76,11 @@ h1 {
     font-size: 1rem;
 }
 
-.kort-info p {
+.card-info p {
     font-size: 1rem;
 }
 
-.kort-info a {
+.card-info a {
     color: #1a5fb4;
     text-decoration: none;
 }
