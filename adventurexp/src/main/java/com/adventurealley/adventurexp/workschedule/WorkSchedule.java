@@ -2,10 +2,11 @@ package com.adventurealley.adventurexp.workschedule;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.adventurealley.adventurexp.employee.Employee;
 import com.adventurealley.adventurexp.workschedule.WorkSchedule.AttendanceState;
+import com.adventurealley.adventurexp.workschedule.Shift;
 
 import com.adventurealley.adventurexp.employee.Employee;
 @Entity
@@ -16,7 +17,7 @@ public class WorkSchedule {
     private long id;
     private long employeeId;
     private long shiftId;
-    private LocalDate date;
+    private LocalDateTime date;
     @Enumerated(EnumType.STRING)
     private AttendanceState attendanceState;
 
@@ -30,7 +31,7 @@ public class WorkSchedule {
 
     public WorkSchedule(){}
 
-    public WorkSchedule(long id, long employeeId, long shiftId, LocalDate date,
+    public WorkSchedule(long id, long employeeId, long shiftId, LocalDateTime date,
                         AttendanceState attendanceState) {
         this.id = id;
         this.employeeId = employeeId;
@@ -51,8 +52,20 @@ public class WorkSchedule {
         this.employee = employee;
     }
 
+    public void setEmployeeId(long employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public long getEmployeeId() {
+        return employeeId;
+    }
+
     public Employee getEmployee() {
         return employee;
+    }
+
+    public Shift getShift() {
+        return shift;
     }
 
    public enum AttendanceState {

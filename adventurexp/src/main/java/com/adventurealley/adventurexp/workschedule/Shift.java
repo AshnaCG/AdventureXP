@@ -26,9 +26,27 @@ public class Shift {
 
     protected Shift() {
     }
+    public Shift(LocalDateTime shiftStart, LocalDateTime shiftEnd) {
+        this.shiftStart = shiftStart;
+        this.shiftEnd = shiftEnd;
+    }
 
     public long getId() {
         return id;
+    }
+
+    public LocalDateTime getShiftStart() {
+        return shiftStart;
+    }
+    public void setShiftStart(LocalDateTime shiftStart) {
+        this.shiftStart = shiftStart;
+    }
+    public void setShiftEnd(LocalDateTime shiftEnd) {
+        this.shiftEnd = shiftEnd;
+    }
+
+    public LocalDateTime getShiftEnd() {
+        return shiftEnd;
     }
 
 }

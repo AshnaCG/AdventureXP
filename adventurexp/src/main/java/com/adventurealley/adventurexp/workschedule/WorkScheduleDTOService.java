@@ -1,10 +1,13 @@
 package com.adventurealley.adventurexp.workschedule;
 
 import com.adventurealley.adventurexp.employee.Employee;
+import java.time.LocalDateTime;
+
+
 
 public class WorkScheduleDTOService {
 
-    public int getWorkScheduleDataId(Employee employee) {
+    public long getWorkScheduleDataId(Employee employee) {
         return employee.getId();
     }
 
@@ -17,14 +20,13 @@ public class WorkScheduleDTOService {
         return employee.getShift();
     }
 
-    public workScheduleDTO createWorkScheduleDTO(WorkSchedule workSchedule) {
-        workSchedule.getId();
-        workSchedule.getEmployeeId();
+    public WorkScheduleDTO createWorkScheduleDTO(Long id, long employeeId, LocalDateTime shiftStart, LocalDateTime shiftEnd) {
 
-        WorkScheduleDTO workScheduleDTO = new WorkScheduleDTO(
-                workSchedule.getId(),
-                workSchedule.getEmployeeId());
-        return workScheduleDTO;
-    }
+        return new WorkScheduleDTO(
+                id,
+                employeeId,
+                shiftStart,
+                shiftEnd
+        );}
 
 }
