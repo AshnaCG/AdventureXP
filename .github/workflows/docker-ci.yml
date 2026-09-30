@@ -1,4 +1,5 @@
 name: Docker CI
+
 on:
   push:
     branches:
@@ -12,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    defaults:
+      run:
+        working-directory: adventurexp
     steps:
       - name: Checkout code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -27,8 +31,8 @@ jobs:
           # Wait for a few seconds to ensure the container is up and running
           sleep 20
 
-          # Test the application endpoint (Tjek endpoint)
-          curl -f http://localhost:ENDPOINT || exit 1
+          # Test the application endpoint - Tester spring actuator helbred
+          curl -f http://localhost:8080/actuator/health | || exit 1
 
           # Stop and remove the container
           docker compose down
