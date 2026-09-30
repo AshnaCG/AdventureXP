@@ -13,9 +13,9 @@ function goToUrl(query) {
     window.history.pushState({}, '', `/detailsActivity.html${query}`);
 }
 
-/* Finder værdien i en fakta-linje, fx factValue('Varighed') -> '30 min' */
+/* Finder værdien i en fact-row, fx factValue('Varighed') -> '30 min' */
 function factValue(label) {
-    const line = Array.from(document.querySelectorAll('.fakta-linje'))
+    const line = Array.from(document.querySelectorAll('.fact-row'))
         .find(l => l.querySelector('span').textContent === label);
     return line.querySelector('strong').textContent;
 }
@@ -45,7 +45,7 @@ describe('Detaljeside', () => {
 
         await getActivityDetail();
 
-        const items = Array.from(document.querySelectorAll('.fakta-boks li')).map(li => li.textContent);
+        const items = Array.from(document.querySelectorAll('.fact-box li')).map(li => li.textContent);
         expect(items).toEqual(['Hjelm', 'Balaclava', 'Kørerdragt']);
     });
 
@@ -55,7 +55,7 @@ describe('Detaljeside', () => {
 
         await getActivityDetail();
 
-        expect(document.querySelectorAll('.fakta-boks li').length).toBe(1);
+        expect(document.querySelectorAll('.fact-box li').length).toBe(1);
     });
 
     test('viser en fejlbesked ved 404', async () => {
@@ -64,8 +64,8 @@ describe('Detaljeside', () => {
 
         await getActivityDetail();
 
-        expect(document.querySelector('.fejl')).not.toBeNull();
-        expect(document.querySelector('.fakta-boks')).toBeNull();
+        expect(document.querySelector('#activity-error')).not.toBeNull();
+        expect(document.querySelector('.fact-box')).toBeNull();
     });
 
     test('CSS: alle klasser på siden har styling', async () => {
@@ -85,6 +85,6 @@ describe('Detaljeside', () => {
         mockFetch(gocart);
         await getActivityDetail();
 
-        expect(getComputedStyle(document.querySelector('.detalje-tekst p')).whiteSpace).toBe('pre-line');
+        expect(getComputedStyle(document.querySelector('.detail-text p')).whiteSpace).toBe('pre-line');
     });
 });

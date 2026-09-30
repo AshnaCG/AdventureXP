@@ -7,27 +7,27 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.side-indhold {
+.page-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2.5rem;
 }
 
-.tilbage-link {
+.back-link {
     display: inline-block;
     margin: 1.5rem 0;
     color: #1a5fb4;
     text-decoration: none;
 }
 
-.detalje-billede {
+.detail-image {
     width: 100%;
     max-height: 500px;
     object-fit: cover;
     border-radius: 4px;
 }
 
-.detalje-indhold {
+.detail-content {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 2rem;
@@ -42,49 +42,49 @@ body {
     font-size: 0.9rem;
 }
 
-.detalje-tekst h1 {
+.detail-text h1 {
     font-size: 4rem;
     font-weight: 900;
     margin: 0.3rem 0 1.5rem;
 }
 
-.detalje-tekst p {
+.detail-text p {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 1rem;
     white-space: pre-line;
 }
 
-.fakta-boks {
+.fact-box {
     border: 2px solid #000;
     border-top: 6px solid #f5c518;
     padding: 1.5rem;
 }
 
-.fakta-boks h3 {
+.fact-box h3 {
     font-size: 1rem;
     margin-bottom: 1rem;
 }
 
-.fakta-linje {
+.fact-row {
     display: flex;
     justify-content: space-between;
     padding: 0.6rem 0;
     border-bottom: 1px solid #eee;
 }
 
-.fakta-boks h4 {
+.fact-box h4 {
     margin: 1.2rem 0 0.6rem;
     font-size: 0.9rem;
 }
 
-.fakta-boks ul {
+.fact-box ul {
     list-style: disc;
     padding-left: 1.2rem;
     margin-bottom: 1.5rem;
 }
 
-.book-knap {
+.book-button {
     width: 100%;
     padding: 1rem;
     background: #1a5fb4;

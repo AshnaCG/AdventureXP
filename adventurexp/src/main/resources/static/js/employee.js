@@ -7,7 +7,7 @@ document.querySelector("#username").textContent = sessionStorage.getItem("userna
 document.querySelector("#logout").addEventListener("click", logOut);
 
 async function loadEquipmentOverview() {
-    const tableBody = document.querySelector("#udstyr-tabel tbody");
+    const tableBody = document.querySelector("#equipment-table tbody");
 
     try {
         const response = await fetch("/adventure/equipment/overview");

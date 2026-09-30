@@ -21,7 +21,7 @@ describe('Aktivitetsoversigt', () => {
         await getActivities();
 
         expect(fetchMock).toHaveBeenCalledWith('/adventure/activity');
-        expect(document.querySelectorAll('.aktivitet-kort').length).toBe(2);
+        expect(document.querySelectorAll('.activity-card').length).toBe(2);
     });
 
     test('kortet viser de rigtige data og linker til detaljesiden', async () => {
@@ -29,7 +29,7 @@ describe('Aktivitetsoversigt', () => {
 
         await getActivities();
 
-        const card = document.querySelector('.aktivitet-kort');
+        const card = document.querySelector('.activity-card');
         expect(card.getAttribute('href')).toBe('detailsActivity.html?id=Gocart');
         expect(card.querySelector('h3').textContent).toBe('Gocart');
         expect(card.querySelector('.badge').textContent).toBe('14+ år');
@@ -42,8 +42,8 @@ describe('Aktivitetsoversigt', () => {
 
         await getActivities();
 
-        expect(document.querySelector('.fejl')).not.toBeNull();
-        expect(document.querySelectorAll('.aktivitet-kort').length).toBe(0);
+        expect(document.querySelector('#activities-error')).not.toBeNull();
+        expect(document.querySelectorAll('.activity-card').length).toBe(0);
     });
 
     test('CSS: alle klasser på siden har styling', async () => {
@@ -55,7 +55,7 @@ describe('Aktivitetsoversigt', () => {
     });
 
     test('CSS: kortene står i et grid med 2 kolonner', () => {
-        const style = getComputedStyle(document.getElementById('aktivitet-liste'));
+        const style = getComputedStyle(document.getElementById('activity-list'));
 
         expect(style.display).toBe('grid');
         expect(style.gridTemplateColumns).toBe('repeat(2, 1fr)');

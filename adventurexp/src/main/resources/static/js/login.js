@@ -9,7 +9,7 @@ async function loginUser(credentials) {
 }
 
 const loginform = document.querySelector(".login-form");
-const loginError = document.querySelector("#login-fejl");
+const loginError = document.querySelector("#login-error");
 
 loginform.addEventListener("submit", async (event) => {
     event.preventDefault();
