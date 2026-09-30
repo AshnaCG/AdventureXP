@@ -3,7 +3,6 @@ package com.adventurealley.adventurexp.activity;
 import com.adventurealley.adventurexp.equipment.Equipment;
 import com.adventurealley.adventurexp.exception.NotFoundException;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class ActivityService {
     }
 
 
-    public Activity update(Long id, Activity updated){
+    public void update(Long id, Activity updated){
         Activity existing = findById(id);
 
         existing.setName(updated.getName().trim());
@@ -49,7 +48,7 @@ public class ActivityService {
         existing.setMinAge(updated.getMinAge());
         existing.setMinHeight(updated.getMinHeight());
 
-        return activityRepository.save(existing);
+        activityRepository.save(existing);
 
     }
 

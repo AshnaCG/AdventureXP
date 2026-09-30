@@ -30,8 +30,13 @@ public class EquipmentController {
         return ResponseEntity.ok(equipmentService.create(equipment));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Equipment> getEquipmentById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(equipmentService.findById(id));
+    }
+    @DeleteMapping("/del/{id}")
+    public ResponseEntity<Equipment> deleteById(@PathVariable("id")Long id){
+        equipmentService.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }
