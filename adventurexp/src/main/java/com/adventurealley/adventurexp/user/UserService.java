@@ -37,11 +37,31 @@ public class UserService {
         return userResponses;
     }
 
-    public UserResponse create(CreateUserRequest request) {
+    public UserResponse create(UserRequest request) {
         if (userRepository.existsByUsername(request.username())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Username already exist");
         }
         User user = User.create(request.username(), request.password(), request.role());
+
+        User saved = userRepository.save(user);
+
+        return new UserResponse(saved.getId(), saved.getRole(), saved.getUsername());
+    }
+
+    public UserResponse update(Long id, UserRequest request) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found: " + id));
+        boolean usernameChanged = !user.getUsername().equals(request.username());
+        if (usernameChanged && userRepository.existsByUsername(request.username())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username already exist");
+        }
+
+        user.setUsername(request.username());
+        user.setRole(request.role());
+
+        if (request.password() != null && !request.password().isBlank()) {
+            user.setPassword(request.password());
+        }
 
         User saved = userRepository.save(user);
 
