@@ -1,5 +1,6 @@
 package adventure.estera.adventurexp.controller;
 
+import adventure.estera.adventurexp.exceptions.NotFoundException;
 import adventure.estera.adventurexp.model.ActivitiesEnum;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,13 @@ public class ActivityController {
 
     @GetMapping("/{name}")
     public ActivitiesEnum getActivity(@PathVariable String name) {
-        return ActivitiesEnum.valueOf(name.toUpperCase());
+        try {
+            return ActivitiesEnum.valueOf(name.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            {
+                throw new NotFoundException("Aktivitet ikke fundet " + name);
+
+            }
+        }
     }
 }

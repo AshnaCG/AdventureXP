@@ -12,7 +12,7 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-        private long id;
+        private Long id;
 
     @Enumerated(EnumType.STRING)
             private BookingType type;
@@ -29,9 +29,15 @@ public class Booking {
     private String customerEmail;
     private String customerPhoneNumber;
 
+    @ManyToOne
+    private BookingPackage bookingPackage;
+
+    private String packageContents;
+    private int totalPrice;
+
     public Booking() {}
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -67,7 +73,19 @@ public class Booking {
         return customerPhoneNumber;
     }
 
-    public void setId(long id) {
+    public BookingPackage getBookingPackage() {
+        return bookingPackage;
+    }
+
+    public String getPackageContents() {
+        return packageContents;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -101,5 +119,17 @@ public class Booking {
 
     public void setCustomerPhoneNumber(String customerPhoneNumber) {
         this.customerPhoneNumber = customerPhoneNumber;
+    }
+
+    public void setBookingPackage(BookingPackage bookingPackage) {
+        this.bookingPackage = bookingPackage;
+    }
+
+    public void setPackageContents(String packageContents) {
+        this.packageContents = packageContents;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

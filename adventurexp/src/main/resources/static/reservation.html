@@ -16,14 +16,14 @@
         <option value="PRIVATE">Privat</option>
     </select>
 
-
     <label for="activity">Aktivitet</label>
     <select id="activity" name="activity">
         <option value="">Ingen (hele centret)</option>
-        <option value="GOKART">Gokart</option>
-        <option value="MINIGOLF">Minigolf</option>
-        <option value="PAINTBALL">Paintball</option>
-        <option value="SUMOBRYDNING">Sumobrydning</option>
+
+    </select>
+    <label for="bookingPackage">Pakke</label>
+    <select id="bookingPackage" name="bookingPackage">
+        <option value="">Ingen (privat)</option>
     </select>
 
 
@@ -46,6 +46,21 @@
 </form>
 
 <p id="besked" hidden></p>
+
+<h2>Reservationer</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Dato</th>
+        <th>Kunde</th>
+        <th>Personer</th>
+        <th>Aktivitet/pakke</th>
+        <th>Pris i alt</th>
+    </tr>
+    </thead>
+    <tbody id="booking-liste"></tbody>
+</table>
 
 
 <script src="reservation.js"></script>
