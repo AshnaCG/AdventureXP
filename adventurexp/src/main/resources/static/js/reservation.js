@@ -65,5 +65,5 @@ reservationsForm.addEventListener("submit", async (event) => {
         message.hidden = false;
         console.log("Kunne ikke kontakte serveren:", error);
     }
-
+// test
 });
