@@ -15,10 +15,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
-  redis:
-    image: redis:8.4
-#    ports:
-#      - "6379:6379"
   app:
     restart: on-failure:5
     build:
@@ -28,12 +24,11 @@ services:
       SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
       SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
       SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
-      SPRING_DATA_REDIS_HOST: redis
     depends_on:
-      - mysql
-      - redis
+      mysql:
+        condition: service_healthy
     ports:
       - "127.0.0.1:8080:8080"
 
 volumes:
-    mysql_data:
+  mysql_data:

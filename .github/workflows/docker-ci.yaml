@@ -1,12 +1,9 @@
 name: Docker CI
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
+    branches: [main]
+  workflow_call:
 
 jobs:
   build:
@@ -16,23 +13,30 @@ jobs:
     defaults:
       run:
         working-directory: adventurexp
+
+    env:
+      MYSQL_DATABASE: adventurexp
+      MYSQL_USER: adventurexp
+      MYSQL_PASSWORD: ci_password
+      MYSQL_ROOT_PASSWORD: ci_root_password
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/adventurexp
+      SPRING_DATASOURCE_USERNAME: adventurexp
+      SPRING_DATASOURCE_PASSWORD: ci_password
     steps:
       - name: Checkout code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Build Docker image
-        run: docker build -t app:test .
+      - name: Build and start containers
+        run: docker compose up -d --build
 
-      - name: Run Docker container
-        run: |
-          # Run the container in detached mode
-          docker compose up -d
-          
-          # Wait for a few seconds to ensure the container is up and running
-          sleep 20
+      # Tester for spring actuator endpoint 'health'
+      - name: Check application health
+        run: curl -f --retry 30 --retry-delay 2 --retry-connrefused http://localhost:8080/actuator/health
 
-          # Test the application endpoint - Tester spring actuator helbred
-          curl -f http://localhost:8080/actuator/health || exit 1
+      - name: Show container logs on failure
+        if: failure()
+        run: docker compose logs
 
-          # Stop and remove the container
-          docker compose down
+      - name: Stop containers
+        if: always()
+        run: docker compose down -v
