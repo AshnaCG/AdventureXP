@@ -23,7 +23,6 @@ jobs:
       SPRING_DATASOURCE_URL: jdbc:mysql://127.0.0.1:3306/adventurexp
       SPRING_DATASOURCE_USERNAME: adventurexp
       SPRING_DATASOURCE_PASSWORD: ci_password
-      SPRING_PROFILES_ACTIVE: mysql
       # Frisk skema hvert CI løb i modsætning til "update" fra lokal dev.
       SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
 
@@ -36,7 +35,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '25'
-          # JDK har en indbygget caching funktion siden version 2. Derfor intet behov for Maven cache segment.
+          # JDK har en indbygget caching funktion siden version 2. Derfor er der intet behov for Maven cache segment.
           cache: maven
           cache-dependency-path: adventurexp/pom.xml
 
@@ -44,11 +43,11 @@ jobs:
         run: chmod +x mvnw
 
       - name: Start MySQL (Docker Compose)
-        run: docker compose -f compose.yaml -d --wait mysql
+        run: docker compose up -d --wait mysql
 
       - name: Compile and run tests
         run: ./mvnw -B verify
 
       - name: Stop containers
         if: always()
-        run: docker compose -f compose.yaml -f compose.ci.yaml down -v
+        run: docker compose down -v

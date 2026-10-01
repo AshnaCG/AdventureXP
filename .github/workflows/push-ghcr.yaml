@@ -12,11 +12,11 @@
  jobs:
    # Using the reusable workflow for Java tests
    java-test:
-     uses: ./.github/workflows/java-test-reusable.yml
+     uses: ./.github/workflows/java-test.yaml
 
    docker-ci:
      needs: java-test
-     uses: ./.github/workflows/docker-ci-reusable.yml
+     uses: ./.github/workflows/docker-ci.yaml
 
    # Build & push Docker image (after tests pass)
    build-and-push:
