@@ -16,6 +16,7 @@ public class Reservation {
     private LocalDateTime dateTime;
     private String email;
     private String phoneNumber;
+    private ReservationStatus status = ReservationStatus.ACTIVE;
 
     @ManyToOne
     private Activity activity;
@@ -29,6 +30,14 @@ public class Reservation {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.activity = activity;
+    }
+
+    public void cancel() {
+        this.status = ReservationStatus.CANCELLED;
+    }
+
+    public ReservationStatus getStatus() {
+        return status;
     }
 
     public Long getId() {
