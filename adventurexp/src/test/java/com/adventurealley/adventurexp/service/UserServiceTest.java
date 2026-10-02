@@ -177,4 +177,35 @@ class UserServiceTest {
         // Postconditions
         assertEquals(HttpStatus.CONFLICT, ex.getStatusCode());
     }
+
+    @Test
+    void deleteUserHappyFlow(){
+        // Test for deleting user
+
+        // Preconditions
+        User user = User.create("employee", "1234", Role.EMPLOYEE);
+        user.setId(1L);
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+
+        // Execution
+        userService.delete(1L);
+
+        // Postcondition
+        verify(userRepository).delete(user);
+    }
+
+    @Test
+    void deleteUserExceptionFlow(){
+        // Test for unknown id
+
+        // Precondition
+        when(userRepository.findById(99L)).thenReturn(Optional.empty());
+
+        // Execution
+        ResponseStatusException ex = assertThrows(ResponseStatusException.class,
+                () -> userService.delete(99L));
+
+        // Postcondition
+        assertEquals(HttpStatus.NOT_FOUND, ex.getStatusCode());
+    }
 }
