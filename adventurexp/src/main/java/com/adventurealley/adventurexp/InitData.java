@@ -1,7 +1,12 @@
 package com.adventurealley.adventurexp;
 
+import com.adventurealley.adventurexp.activity.ActivitiesEnum;
 import com.adventurealley.adventurexp.activity.Activity;
+import com.adventurealley.adventurexp.activity.ActivityPrice;
+import com.adventurealley.adventurexp.activity.ActivityPriceRepository;
 import com.adventurealley.adventurexp.activity.ActivityRepository;
+import com.adventurealley.adventurexp.booking.BookingPackage;
+import com.adventurealley.adventurexp.booking.BookingPackageRepository;
 import com.adventurealley.adventurexp.equipment.Equipment;
 import com.adventurealley.adventurexp.equipment.EquipmentRepository;
 import com.adventurealley.adventurexp.equipment.State;
@@ -20,17 +25,27 @@ public class InitData implements CommandLineRunner {
     private final UserRepository userRepository;
     private final ActivityRepository activityRepository;
     private final EquipmentRepository equipmentRepository;
+    // Nyt: booking
+    private final ActivityPriceRepository activityPriceRepository;
+    private final BookingPackageRepository bookingPackageRepository;
 
-    public InitData(UserRepository userRepository, ActivityRepository activityRepository, EquipmentRepository equipmentRepository) {
+    public InitData(UserRepository userRepository,
+                    ActivityRepository activityRepository,
+                    EquipmentRepository equipmentRepository,
+                    ActivityPriceRepository activityPriceRepository,
+                    BookingPackageRepository bookingPackageRepository) {
         this.userRepository = userRepository;
         this.activityRepository = activityRepository;
         this.equipmentRepository = equipmentRepository;
+        this.activityPriceRepository = activityPriceRepository;
+        this.bookingPackageRepository = bookingPackageRepository;
     }
 
     @Override
     public void run(String... args) {
         createUsers();
         createActivitiesWithEquipment();
+        createPricesAndPackages(); // Nyt: booking
     }
 
     private void createUsers() {
@@ -75,10 +90,24 @@ public class InitData implements CommandLineRunner {
         allEquipment.addAll(addItems(paintball, "Dragt", 5));
         allEquipment.addAll(addItems(sumo, "Dragt", 5));
         allEquipment.addAll(addItems(sumo, "Hjelm", 5));
-        allEquipment.addAll(addItems(minigolf, "Golfkølle",5));
+        allEquipment.addAll(addItems(minigolf, "Golfkølle", 5));
         allEquipment.addAll(addItems(minigolf, "Golfbolde", 5));
 
         equipmentRepository.saveAll(allEquipment);
+    }
+
+    // Nyt: booking. ActivitiesEnum bruges midlertidigt, se issue om at erstatte den med Activity.
+    private void createPricesAndPackages() {
+        if (activityPriceRepository.count() > 0) {
+            return;
+        }
+        activityPriceRepository.save(new ActivityPrice(ActivitiesEnum.GOKART, 250));
+        activityPriceRepository.save(new ActivityPrice(ActivitiesEnum.MINIGOLF, 100));
+        activityPriceRepository.save(new ActivityPrice(ActivitiesEnum.PAINTBALL, 300));
+        activityPriceRepository.save(new ActivityPrice(ActivitiesEnum.SUMOBRYDNING, 150));
+
+        bookingPackageRepository.save(new BookingPackage("Hele centret",
+                "Alle aktiviteter for hele gruppen (min. 40 personer)", 700));
     }
 
     private List<Equipment> addItems(Activity activity, String name, int antal) {
