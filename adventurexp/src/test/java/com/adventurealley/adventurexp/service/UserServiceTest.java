@@ -107,4 +107,74 @@ class UserServiceTest {
         assertEquals(HttpStatus.CONFLICT, ex.getStatusCode());
 
     }
+
+    @Test
+    void updateUserHappyFlow(){
+        // Preconditions
+        User user = User.create("admin", "1234", Role.ADMIN);
+        user.setId(1L);
+        UserRequest request = new UserRequest("admin", "4321", Role.EMPLOYEE);
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userRepository.save(any(User.class))).thenReturn(user);
+
+        // Execution
+        UserResponse response = userService.update(1L, request);
+
+        // Postconditions
+        assertEquals(1L, response.id());
+        assertEquals("admin", response.username());
+        assertEquals(Role.EMPLOYEE, response.role());
+        assertEquals("4321", user.getPassword());
+    }
+
+    @Test
+    void updateUserOldPassword(){
+        // Test for keeping old password
+
+        // Preconditions
+        User user = User.create("admin", "1234", Role.ADMIN);
+        user.setId(1L);
+        UserRequest request = new UserRequest("admin", null, Role.EMPLOYEE);
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userRepository.save(any(User.class))).thenReturn(user);
+
+        // Execution
+        userService.update(1L, request);
+
+        assertEquals("1234", user.getPassword());
+    }
+
+    @Test
+    void updateUserExceptionFlow(){
+        // Test for unknown id
+
+        // Preconditions
+        UserRequest request = new UserRequest("admin", "1234", Role.ADMIN);
+        when(userRepository.findById(99L)).thenReturn(Optional.empty());
+
+        // Execution
+        ResponseStatusException ex = assertThrows(ResponseStatusException.class, () -> userService.update(99L, request));
+
+        // Postconditions
+        assertEquals(HttpStatus.NOT_FOUND, ex.getStatusCode());
+    }
+
+    @Test
+    void updateUserUsernameTakenExceptionFlow(){
+        // Test for username taken
+
+        // Preconditions
+        User user = User.create("employee", "1234", Role.EMPLOYEE);
+        user.setId(1L);
+        UserRequest request = new UserRequest("admin", "", Role.EMPLOYEE);
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userRepository.existsByUsername("admin")).thenReturn(true);
+
+        // Execution
+        ResponseStatusException ex = assertThrows(ResponseStatusException.class,
+                () -> userService.update(1L, request));
+
+        // Postconditions
+        assertEquals(HttpStatus.CONFLICT, ex.getStatusCode());
+    }
 }
