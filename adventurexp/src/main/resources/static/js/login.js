@@ -41,9 +41,10 @@ loginform.addEventListener("submit", async (event) => {
         sessionStorage.setItem("role", data.role);
 
         if (data.role === "ADMIN") {
-            window.location.href = "admin.html"
-        }
-        if (data.role === "EMPLOYEE") {
+            window.location.href = "admin.html";
+        } else if (data.role === "RESERVATION") {
+            window.location.href = "manual-booking.html";
+        } else {
             window.location.href = "employee.html";
         }
 
