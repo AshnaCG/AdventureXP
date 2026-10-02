@@ -1,5 +1,6 @@
 package com.adventurealley.adventurexp.workschedule;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public class ShiftRepository {
+public interface ShiftRepository extends JpaRepository<Shift, Long> {
 
 }

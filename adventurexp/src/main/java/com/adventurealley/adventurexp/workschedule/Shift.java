@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 @Entity
@@ -13,6 +14,10 @@ public class Shift {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne 
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
     @OneToMany(mappedBy = "shift")
     private List<WorkSchedule> workSchedules = new ArrayList<>();
@@ -23,9 +28,13 @@ public class Shift {
 
     private LocalDateTime shiftStart;
     private LocalDateTime shiftEnd;
+    private LocalDate date;
+    
 
-    protected Shift() {
+
+    public Shift() {
     }
+
     public Shift(LocalDateTime shiftStart, LocalDateTime shiftEnd) {
         this.shiftStart = shiftStart;
         this.shiftEnd = shiftEnd;

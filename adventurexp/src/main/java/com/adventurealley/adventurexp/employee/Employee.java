@@ -17,10 +17,10 @@ public class Employee {
     private String name;
 
     @OneToMany(mappedBy = "employee")
-    private List<WorkSchedule> workSchedules = new ArrayList<>();
+    private List<Shift> shifts = new ArrayList<>();
 
-    public list<WorkSchedule> getWorkSchedules() {
-        return workSchedules;
+    public List<Shift> getShifts() {
+        return shifts;
     }
 
     protected Employee() {
