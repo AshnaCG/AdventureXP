@@ -31,7 +31,7 @@ jobs:
 
       # Tester for spring actuator endpoint 'health'
       - name: Check application health
-        run: curl -f --retry 30 --retry-delay 2 --retry-connrefused http://localhost:8080/actuator/health
+        run: curl -f --retry 30 --retry-delay 2 --retry-all-errors http://localhost:8080/actuator/health
 
       - name: Show container logs on failure
         if: failure()
