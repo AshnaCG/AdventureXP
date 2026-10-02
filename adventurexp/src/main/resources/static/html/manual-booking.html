@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>AdventureXP - Reservation</title>
+</head>
+<body>
+
+<h1>Ny reservation</h1>
+
+<form id="reservation-form">
+
+    <label for="type">Type</label>
+    <select id="type" name="type">
+        <option value="WHOLE_CENTER">Hele centret</option>
+        <option value="PRIVATE">Privat</option>
+    </select>
+
+    <label for="activity">Aktivitet</label>
+    <select id="activity" name="activity">
+        <option value="">Ingen (hele centret)</option>
+
+    </select>
+    <label for="bookingPackage">Pakke</label>
+    <select id="bookingPackage" name="bookingPackage">
+        <option value="">Ingen (privat)</option>
+    </select>
+
+
+    <label for="participants">Antal personer</label>
+    <input type="number" id="participants" name="participants" min="40" required>
+
+    <label for="startTime">Dato og tid</label>
+    <input type="datetime-local" id="startTime" name="startTime" required>
+
+    <label for="customerName">Kundens navn</label>
+    <input type="text" id="customerName" name="customerName" required>
+
+    <label for="customerEmail">E-mail</label>
+    <input type="email" id="customerEmail" name="customerEmail">
+
+    <label for="customerPhoneNumber">Telefon</label>
+    <input type="tel" id="customerPhoneNumber" name="customerPhoneNumber">
+
+    <button type="submit">Opret reservation</button>
+</form>
+
+<p id="besked" hidden></p>
+
+<h2>Reservationer</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Dato</th>
+        <th>Kunde</th>
+        <th>Personer</th>
+        <th>Aktivitet/pakke</th>
+        <th>Pris i alt</th>
+    </tr>
+    </thead>
+    <tbody id="booking-liste"></tbody>
+</table>
+
+
+<script src="../js/manual-booking.js"></script>
+
+</body>
+</html>
