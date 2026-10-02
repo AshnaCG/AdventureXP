@@ -91,4 +91,20 @@ class UserServiceTest {
         assertEquals(Role.ADMIN, response.role());
         verify(userRepository).save(any(User.class));
     }
+
+    @Test
+    void createUserExceptionFlow() {
+        // Test for username already taken
+
+        // Preconditions
+        UserRequest request = new UserRequest("adam01", "marcusPro", Role.ADMIN);
+        when(userRepository.existsByUsername(request.username())).thenReturn(true);
+
+        // Execution
+        ResponseStatusException ex = assertThrows(ResponseStatusException.class, () -> userService.create(request));
+
+        //Postconditions
+        assertEquals(HttpStatus.CONFLICT, ex.getStatusCode());
+
+    }
 }
