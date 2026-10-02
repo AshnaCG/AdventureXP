@@ -1,9 +1,6 @@
-package com.adventurealley.adventurexp.service;
+package com.adventurealley.adventurexp.activity;
 import com.adventurealley.adventurexp.exception.NotFoundException;
-import com.adventurealley.adventurexp.activity.ActivitiesEnum;
-import com.adventurealley.adventurexp.activity.ActivityPrice;
 import com.adventurealley.adventurexp.booking.BookingPackage;
-import com.adventurealley.adventurexp.activity.ActivityPriceRepository;
 import com.adventurealley.adventurexp.booking.BookingPackageRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
