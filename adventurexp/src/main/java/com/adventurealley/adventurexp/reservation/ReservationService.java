@@ -25,12 +25,11 @@ public class ReservationService {
 
         if (reservation.getDateTime()
                 .isAfter(LocalDateTime.now().plusHours(24))) {
-
             reservation.cancel();
             reservationRepository.save(reservation);
+
+        } else {
+            throw new IllegalStateException("Reservation cannot be cancelled less than 24 hours before.");
         }
-
-
-
     }
 }

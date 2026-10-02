@@ -3,10 +3,8 @@ package com.adventurealley.adventurexp.reservation;
 import com.adventurealley.adventurexp.activity.Activity;
 import com.adventurealley.adventurexp.activity.ActivityRepository;
 import com.adventurealley.adventurexp.exception.NotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -34,5 +32,18 @@ public class ReservationController {
         Reservation reservation = new Reservation(fullName, dateTime, email, phoneNumber, activity);
 
         reservationService.createReservation(reservation);
+    }
+
+    @PutMapping("/{id}/cancel")
+    public ResponseEntity<String> cancelReservation(@PathVariable Long id) {
+
+        try {
+            reservationService.cancelReservation(id);
+
+            return ResponseEntity.ok("Reservation cancelled ✅");
+        } catch (IllegalStateException e) {
+
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

@@ -1,6 +1,9 @@
 package com.adventurealley.adventurexp.reservation;
 
+import com.adventurealley.adventurexp.activity.ActivityRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -40,5 +43,20 @@ public class CancelReservationTest {
 
         //Assert
         assertEquals(ReservationStatus.CANCELLED, reservation.getStatus());
+    }
+
+    @Test
+    void shouldReturnOkWhenReservationIsCancelled() {
+        //Arrange
+        ReservationService service = mock(ReservationService.class);
+        ActivityRepository activityRepository = mock(ActivityRepository.class);
+        ReservationController controller = new ReservationController(service, activityRepository);
+        Reservation reservation = new Reservation();
+
+        //Act
+        ResponseEntity<String> response = controller.cancelReservation(reservation.getId());
+
+        //Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 }
