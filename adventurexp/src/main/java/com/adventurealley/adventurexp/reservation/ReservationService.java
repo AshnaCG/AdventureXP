@@ -14,8 +14,8 @@ public class ReservationService {
         this.reservationRepository = reservationRepository;
     }
 
-    public void createReservation(Reservation reservation) {
-        reservationRepository.save(reservation);
+    public Reservation createReservation(Reservation reservation) {
+       return reservationRepository.save(reservation);
     }
 
     public void cancelReservation(Long id) {
