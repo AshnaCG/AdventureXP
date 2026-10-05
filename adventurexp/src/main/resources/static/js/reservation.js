@@ -51,7 +51,8 @@ reservationsForm.addEventListener("submit", async (event) => {
         const response = await createReservation(reservation);
 
         if (response.ok) {
-            message.textContent = "Tak! Din reservation er modtaget.";
+            const id = await response.json();
+            message.textContent = `Tak! Dit reservationsnummer er ${id}.`;
             message.hidden = false;
             reservationsForm.reset();
         } else {
