@@ -2,13 +2,20 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opret aktivitets reservation</title>
     <link rel="stylesheet" href="../css/styleDesignSystem.css">
     <link rel="stylesheet" href="../css/reservationCSS.css">
 </head>
 <body>
-<header>
-    <h1>Adventure Alley</h1>
+<header class="site-header">
+    <a href="index.html" class="logo">Adventure Alley</a>
+    <nav class="main-nav">
+        <a href="index.html">Forside</a>
+        <a href="activities.html">Aktiviteter</a>
+        <a href="reservation.html" class="active">Reservér</a>
+        <a href="login.html" class="nav-login">Log ind</a>
+    </nav>
 </header>
 
 <h1 class="page-title">Reservèr aktivitet</h1>
@@ -36,7 +43,7 @@
     <label for="phoneNumber">Telefonnummer</label>
     <input type="text" id="phoneNumber" name="phoneNumber">
 
-    <button type="submit">Bekræft reservation</button>
+    <button type="submit" class="reserve-button">Bekræft reservation</button>
 
 </form>
 

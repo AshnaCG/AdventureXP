@@ -1,62 +1,133 @@
-/* Styling til reservation.html - bygger ovenpå styleDesignSystem.css */
+/* Styling til reservation.html - bygger ovenpå styleDesignSystem.css
+   og bruger samme farver som forsiden, login og aktivitetssiderne */
+
+:root {
+    --yellow: #fec62c;
+    --blue: #1a5fb4;
+    --blue-dark: #154d93;
+    --black: #0d1b2a;
+    --white: #ffffff;
+    --background: #f5f6f8;
+}
 
 body {
     margin: 0;
+    background-color: var(--background);
+    font-family: Arial, sans-serif;
+    color: #000;
 }
 
-header {
-    padding: 0 20px;
+/* ---------- Header (samme som forsiden) ---------- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background-color: var(--black);
+    color: var(--white);
+    border-bottom: 5px solid var(--yellow);
 }
 
+.logo {
+    color: var(--yellow);
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    padding-bottom: 4px;
+    border-bottom: 3px solid transparent;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    border-bottom-color: #1c98e0;
+}
+
+.main-nav .nav-login {
+    background-color: #1c98e0;
+    padding: 8px 20px;
+    border-radius: 8px;
+    border-bottom: none;
+}
+
+.main-nav .nav-login:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+/* ---------- Indhold ---------- */
 .page-title {
     text-align: center;
     margin: 40px 0 20px;
-    font-size: 36px;
+    font-size: 2.8rem;
+    font-weight: 900;
 }
 
+/* Formular-boks - samme look som login og fakta-boksen */
 #reservationsForm {
     max-width: 480px;
     margin: 0 auto 60px;
-    padding: 30px;
-    background-color: #ffffff;
-    border-top: 6px solid #fec62c;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    padding: 2rem;
+    background-color: var(--white);
+    border: 2px solid #000;
+    border-top: 6px solid var(--yellow);
     display: flex;
     flex-direction: column;
 }
 
 #reservationsForm label {
     font-weight: bold;
-    font-size: 16px;
-    margin: 14px 0 6px;
+    font-size: 0.95rem;
+    margin: 1rem 0 0.4rem;
 }
 
 #reservationsForm input,
 #reservationsForm select {
-    font-family: "Nunito", Arial, sans-serif;
-    font-size: 16px;
-    padding: 10px 12px;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem;
     border: 2px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
+    border-radius: 4px;
+    background-color: var(--white);
 }
 
 #reservationsForm input:focus,
 #reservationsForm select:focus {
     outline: none;
-    border-color: #1c98e0;
+    border-color: var(--blue);
 }
 
-#reservationsForm button {
-    margin-top: 28px;
-    font-size: 20px;
+/* Knap - samme blå som BOOK- og login-knappen */
+#reservationsForm .reserve-button {
+    margin-top: 1.8rem;
+    width: 100%;
+    padding: 1rem;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 0;
+    font-family: Arial, sans-serif;
     font-weight: bold;
-    padding: 12px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
-#reservationsForm button:hover {
-    background-color: #f0b400;
+#reservationsForm .reserve-button:hover {
+    background: var(--blue-dark);
 }
 
 #reservationsForm p {
@@ -65,12 +136,25 @@ header {
     font-weight: bold;
 }
 
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px 20px;
+    }
+    .main-nav {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
 @media (max-width: 600px) {
     #reservationsForm {
         margin: 0 16px 40px;
-        padding: 20px;
+        padding: 1.5rem;
     }
     .page-title {
-        font-size: 26px;
+        font-size: 2rem;
     }
 }
