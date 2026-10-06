@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.adventurealley.adventurexp.schedule.Shift;
-import com.adventurealley.adventurexp.schedule.WorkSchedule;
+
 
 @Entity
 @Table(name = "employee")
@@ -13,7 +13,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-
+    private Shift shift;
     private Long id;
     private String name;
     @OneToMany(mappedBy = "employee")
@@ -48,6 +48,6 @@ public class Employee {
     }
 
     public Shift getShift() {
-        return Shift;
+        return shift;
     }
 }

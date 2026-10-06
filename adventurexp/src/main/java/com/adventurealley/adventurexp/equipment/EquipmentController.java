@@ -1,14 +1,9 @@
-<<<<<<<< HEAD:adventurexp/src/main/java/adventure/adventurexp/controller/EquipmentController.java
-package adventure.adventurexp.controller;
-========
+
 package com.adventurealley.adventurexp.equipment;
->>>>>>>> 135b39884ccbec596f97b07f7a57b21c3f91463f:adventurexp/src/main/java/com/adventurealley/adventurexp/equipment/EquipmentController.java
+
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import adventure.adventurexp.model.Equipment;
-import adventure.adventurexp.service.EquipmentService;
 
 import java.util.List;
 

@@ -4,7 +4,6 @@ import java.util.List;
 import java.time.LocalDate;
 import org.springframework.stereotype.Service;
 
-import com.adventurealley.adventurexp.schedule.Shift;
 
 
 @Service 
