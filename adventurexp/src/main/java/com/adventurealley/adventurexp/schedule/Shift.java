@@ -1,4 +1,4 @@
-package com.adventurealley.adventurexp.workschedule;
+package com.adventurealley.adventurexp.schedule;
 
 import com.adventurealley.adventurexp.employee.Employee;
 import jakarta.persistence.*;
@@ -19,29 +19,41 @@ public class Shift {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @OneToMany(mappedBy = "shift")
-    private List<WorkSchedule> workSchedules = new ArrayList<>();
-
-    public List<WorkSchedule> getWorkSchedules() {
-        return workSchedules;
-    }
-
     private LocalDateTime shiftStart;
     private LocalDateTime shiftEnd;
     private LocalDate date;
+    private Long employeeId;
+    private String employeeName;
     
 
 
     public Shift() {
     }
 
-    public Shift(LocalDateTime shiftStart, LocalDateTime shiftEnd) {
+    public Shift(LocalDateTime shiftStart, LocalDateTime shiftEnd, LocalDate date,
+        Long employeeId, String employeeName) {
         this.shiftStart = shiftStart;
         this.shiftEnd = shiftEnd;
+        this.date = date;
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
     }
 
     public long getId() {
         return id;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+    public String getEmployeeName() {
+        return employeeName;
     }
 
     public LocalDateTime getShiftStart() {
@@ -56,6 +68,10 @@ public class Shift {
 
     public LocalDateTime getShiftEnd() {
         return shiftEnd;
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
 }

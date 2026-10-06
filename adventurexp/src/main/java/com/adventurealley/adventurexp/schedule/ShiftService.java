@@ -1,8 +1,13 @@
-package com.adventurealley.adventurexp.workschedule;
+package com.adventurealley.adventurexp.schedule;
 
 import java.util.List;
+import java.time.LocalDate;
+import org.springframework.stereotype.Service;
 
-import com.adventurealley.adventurexp.workschedule.Shift;
+import com.adventurealley.adventurexp.schedule.Shift;
+
+
+@Service 
 public class ShiftService {
 
 
@@ -19,6 +24,10 @@ public class ShiftService {
 
     public List<Shift> getAllShifts(){
         return shiftRepository.findAll();
+    }
+
+    public List<Shift> getShiftsByDate(LocalDate date){
+        return shiftRepository.findByDate(date);
     }
     
 }

@@ -1,4 +1,4 @@
-package com.adventurealley.adventurexp.workschedule;
+package com.adventurealley.adventurexp.schedule;
 
 import java.util.List;
 import java.time.LocalDate;

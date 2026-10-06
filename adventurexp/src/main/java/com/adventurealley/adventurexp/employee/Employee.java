@@ -1,23 +1,25 @@
 package com.adventurealley.adventurexp.employee;
 
-import com.adventurealley.adventurexp.workschedule.WorkSchedule;
-import com.adventurealley.adventurexp.workschedule.Shift;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.adventurealley.adventurexp.schedule.Shift;
+import com.adventurealley.adventurexp.schedule.WorkSchedule;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
     private Long id;
-
-
     private String name;
-
     @OneToMany(mappedBy = "employee")
     private List<Shift> shifts = new ArrayList<>();
+
+
 
     public List<Shift> getShifts() {
         return shifts;

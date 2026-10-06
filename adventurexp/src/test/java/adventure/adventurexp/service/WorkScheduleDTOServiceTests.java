@@ -8,12 +8,12 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
-import com.adventurealley.adventurexp.workschedule.Shift;
-import com.adventurealley.adventurexp.workschedule.ShiftRepository;
-import com.adventurealley.adventurexp.workschedule.ShiftService;
-import com.adventurealley.adventurexp.workschedule.WorkSchedule;
-import com.adventurealley.adventurexp.workschedule.WorkScheduleDTO;
-import com.adventurealley.adventurexp.workschedule.WorkScheduleDTOService;
+import com.adventurealley.adventurexp.schedule.Shift;
+import com.adventurealley.adventurexp.schedule.ShiftRepository;
+import com.adventurealley.adventurexp.schedule.ShiftService;
+import com.adventurealley.adventurexp.schedule.WorkSchedule;
+import com.adventurealley.adventurexp.schedule.WorkScheduleDTO;
+import com.adventurealley.adventurexp.schedule.WorkScheduleDTOService;
 
 public class WorkScheduleDTOServiceTests {
 

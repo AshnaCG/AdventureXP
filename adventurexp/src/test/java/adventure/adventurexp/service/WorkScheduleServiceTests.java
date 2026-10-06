@@ -4,9 +4,10 @@
     import static org.mockito.Mockito.verify;
 
     import org.junit.jupiter.api.Test;
-    import com.adventurealley.adventurexp.workschedule.WorkSchedule;
-    import com.adventurealley.adventurexp.workschedule.WorkScheduleRepository;
-    import com.adventurealley.adventurexp.workschedule.WorkScheduleService;
+
+import com.adventurealley.adventurexp.schedule.WorkSchedule;
+import com.adventurealley.adventurexp.schedule.WorkScheduleRepository;
+import com.adventurealley.adventurexp.schedule.WorkScheduleService;
 
     public class WorkScheduleServiceTests {
 
