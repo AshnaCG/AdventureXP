@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
 
 @RestController
 @RequestMapping("/adventure/reservation")
@@ -35,4 +38,36 @@ public class ReservationController {
 
         reservationService.createReservation(reservation);
     }
+
+    @GetMapping
+    public List<Reservation> getAllReservations() {
+        return reservationService.getAllReservations();
+    }
+
+    @GetMapping ("/id")
+    public Reservation updateReservation(
+        @RequestParam Long id, 
+        @RequestBody Reservation updatedReservation) {
+
+        return reservationService.updateReservation(id, updatedReservation);
+    }
+    
+    @GetMapping("/delete")
+    public void deleteReservation(@RequestParam Long id) {
+        reservationService.deleteReservation(id);
+    }
+
+    @GetMapping ("/activity")
+    public List<Reservation> filterByActivity(
+        @RequestParam String activityName) {
+
+        return reservationService.filterByActivity(activityName);
+    }
+
+@GetMapping("/test2")
+public String test2() {
+    return "test2";
+}
+
+
 }
