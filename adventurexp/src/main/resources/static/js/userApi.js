@@ -1,65 +1,41 @@
 const BASE_URL = "/adventure/users";
 
-export async function fetchUsers () {
-    try {
-        const response = await fetch(BASE_URL);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch users: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error(error);
-        return [];
+async function request(url, options = {}) {
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+        const error = new Error(`Request failed: ${response.status}`);
+        error.status = response.status;
+        throw error;
     }
+
+    if (response.status === 204) {
+        return null;
+    }
+    return response.json();
 }
 
-export async function createUser(user) {
-    try {
-        const response = await fetch(BASE_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user),
-        });
-         if (!response.ok) {
-             throw new Error(`Failed to create user: ${response.status}`);
-         }
-         return await response.json();
-    } catch (error) {
-        console.error(error);
-    }
+export function fetchUsers() {
+    return request(BASE_URL);
 }
 
-export async function updateUser(id, updatedUser) {
-    try {
-        const response = await fetch(`${BASE_URL}/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updatedUser),
-        });
-        if (!response.ok) {
-            throw new Error(`Failed to update user: ${response.status}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error(error);
-    }
+export function createUser(user) {
+    return request(BASE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+    });
+}
+
+export function updateUser(id, updatedUser) {
+    return request(`${BASE_URL}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedUser),
+    });
 }
 
 export async function deleteUser(id) {
-    try {
-        const response = await fetch(`${BASE_URL}/${id}`, {
-            method: "DELETE",
-        });
-        if (!response.ok) {
-            throw new Error(`Failed to delete user: ${response.status}`);
-        }
-        return true;
-    } catch (error) {
-        console.error(error);
-        return false;
-    }
+    await request(`${BASE_URL}/${id}`, { method: "DELETE" });
+    return true;
 }
