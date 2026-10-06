@@ -1,0 +1,207 @@
+/* Forside – farver: gul, blå, sort, hvid */
+
+:root {
+    --yellow: #fec62c;
+    --yellow-dark: #e5ad10;
+    --blue: #1c98e0;
+    --black: #0d1b2a;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Nunito", Arial, sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background-color: var(--black);
+    border-bottom: 5px solid var(--yellow);
+}
+
+.logo {
+    color: var(--yellow);
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    padding-bottom: 4px;
+    border-bottom: 3px solid transparent;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    border-bottom-color: var(--blue);
+}
+
+.main-nav .nav-login {
+    background-color: var(--blue);
+    padding: 8px 20px;
+    border-radius: 8px;
+    border-bottom: none;
+}
+
+.main-nav .nav-login:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    position: relative;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    padding: 60px;
+    background-image: url("../image/Gokart.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(13, 27, 42, 0.92) 0%, rgba(13, 27, 42, 0.55) 60%, rgba(13, 27, 42, 0.2) 100%);
+}
+
+.hero-content {
+    position: relative;
+    max-width: 620px;
+    color: var(--white);
+}
+
+.hero-label {
+    display: inline-block;
+    color: var(--yellow);
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+
+.hero h1 {
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 34px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 34px;
+    border-radius: 10px;
+    font-size: 19px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 3px solid transparent;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-yellow {
+    background-color: var(--yellow);
+    color: var(--black);
+}
+
+.btn-yellow:hover {
+    background-color: var(--yellow-dark);
+}
+
+.btn-outline {
+    border-color: var(--blue);
+    color: var(--white);
+}
+
+.btn-outline:hover {
+    background-color: var(--blue);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 40px 60px;
+    background-color: var(--black);
+    color: var(--white);
+    border-top: 5px solid var(--blue);
+}
+
+.site-footer h3 {
+    color: var(--yellow);
+    margin-bottom: 12px;
+}
+
+.site-footer p {
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px 20px;
+    }
+    .main-nav {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero {
+        padding: 40px 20px;
+    }
+    .hero h1 {
+        font-size: 40px;
+    }
+    .hero p {
+        font-size: 17px;
+    }
+    .site-footer {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 30px 20px;
+    }
+}

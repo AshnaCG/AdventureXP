@@ -1,0 +1,15 @@
+:root {
+    --color-background-white: #f5f6f8;
+    --color-box-white: #ffffff;
+    --color-header-black: #0d1b2a;
+    --color-sidebar-black: #132639;
+    --color-button-blue: #1c98e0;
+    --color-button-yellow: #fec62c;
+    --color-text-red: #ff0000;
+}
+
+body {
+    background-color: grey;
+    margin: 0;
+    padding: 20px;
+}
