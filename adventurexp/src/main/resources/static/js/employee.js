@@ -21,3 +21,17 @@ async function loadEquipmentOverview() {
 }
 
 loadEquipmentOverview();
+
+
+
+const scheduleSection = document.body.querySelector("#schedule-section")
+
+const calendarContainer = scheduleSection.querySelector("#calendar")
+
+const schedulePlan = scheduleSection.querySelector("#calendar-controls")
+
+const weekPlanBtn = schedulePlan.querySelector("#week-view-btn")
+
+const monthPlanBtn = schedulePlan.querySelector("#month-view-btn")
+
+let currentView = "week";
