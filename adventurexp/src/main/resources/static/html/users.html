@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AdventureXP - Bruger</title>
+</head>
+<body>
+    <h1>Brugere</h1>
+    <a href="admin.html" class="back-link">Tilbage til admin</a>
+
+    <p id="user-error" hidden></p>
+    <p id="user-success" hidden></p>
+
+    <form id="user-form">
+        <input type="hidden" id="user-id">
+
+        <label for="user-username">Brugernavn</label>
+        <input type="text" id="user-username" name="username" required>
+
+        <label for="user-password">Adgangskode</label>
+        <input type="password" id="user-password" name="password" placeholder="Lad stå tomt for at beholde den nuværende">
+
+        <label for="user-role">Rolle</label>
+        <select id="user-role" name="role">
+            <option value="EMPLOYEE">Medarbejder</option>
+            <option value="ADMIN">Admin</option>
+            <option value="RESERVATION">Reservation</option>
+        </select>
+
+        <button type="submit" id="form-submit">Gem</button>
+        <button type="button" id="form-cancel" hidden>Annuller</button>
+    </form>
+
+<table id="user-table">
+    <thead>
+        <tr>
+            <th>Brugernavn</th>
+            <th>Rolle</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody id="user-table-body"></tbody>
+</table>
+
+<script type="module" src="../js/users.js"></script>
+</body>
+</html>
