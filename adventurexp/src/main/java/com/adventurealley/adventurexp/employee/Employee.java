@@ -12,9 +12,8 @@ import com.adventurealley.adventurexp.schedule.Shift;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Shift shift;
     private Long id;
+    private Role role;
     private String name;
     @OneToMany(mappedBy = "employee")
     private List<Shift> shifts = new ArrayList<>();
@@ -27,8 +26,6 @@ public class Employee {
 
     protected Employee() {
     }
-
-    private Role role;
 
     public enum Role {
     EMPLOYEE,
@@ -45,9 +42,5 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Shift getShift() {
-        return shift;
     }
 }

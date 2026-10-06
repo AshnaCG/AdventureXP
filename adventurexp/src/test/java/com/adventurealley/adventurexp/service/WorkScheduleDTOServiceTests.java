@@ -1,4 +1,4 @@
-package adventure.adventurexp.service;
+package com.adventurealley.adventurexp.service;
 
 
 import static org.mockito.Mockito.mock;

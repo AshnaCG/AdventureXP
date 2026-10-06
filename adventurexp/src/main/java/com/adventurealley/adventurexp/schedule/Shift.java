@@ -20,21 +20,16 @@ public class Shift {
     private LocalDateTime shiftStart;
     private LocalDateTime shiftEnd;
     private LocalDate date;
-    private Long employeeId;
-    private String employeeName;
     
 
 
     public Shift() {
     }
 
-    public Shift(LocalDateTime shiftStart, LocalDateTime shiftEnd, LocalDate date,
-        Long employeeId, String employeeName) {
+    public Shift(LocalDateTime shiftStart, LocalDateTime shiftEnd, LocalDate date) {
         this.shiftStart = shiftStart;
         this.shiftEnd = shiftEnd;
         this.date = date;
-        this.employeeId = employeeId;
-        this.employeeName = employeeName;
     }
 
     public long getId() {
@@ -47,12 +42,11 @@ public class Shift {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-    public Long getEmployeeId() {
-        return employeeId;
-    }
+    
     public String getEmployeeName() {
-        return employeeName;
+    return employee.getName();
     }
+
 
     public LocalDateTime getShiftStart() {
         return shiftStart;
