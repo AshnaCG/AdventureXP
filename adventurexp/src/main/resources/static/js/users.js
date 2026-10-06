@@ -13,6 +13,12 @@ const roleSelect = document.querySelector("#user-role");
 const formSubmit = document.querySelector("#form-submit");
 const formCancel = document.querySelector("#form-cancel");
 
+const roleLabels = {
+    ADMIN: "Admin",
+    EMPLOYEE: "Employee",
+    RESERVATION: "Reservation",
+};
+
 function showError (message) {
     userSuccess.hidden=true;
     userError.textContent=message;
@@ -23,6 +29,48 @@ function showSucces (message) {
     userError.hidden=true;
     userSuccess.textContent=message;
     userSuccess.hidden=false;
+}
+
+function loadErrorMessage (error) {
+    switch (error.status) {
+        case 401:
+        case 403:
+            return "Du har ikke adgang til at se brugere";
+        case 500:
+            return "Der er sket en fejl på serveren. Prøv igen senere";
+        default:
+            return "Brugere kunne ikke hentes";
+    }
+}
+
+function saveErrorMessage (error) {
+    switch (error.status) {
+        case 401:
+        case 403:
+            return "Du har ikke adgang til at gemme brugere";
+        case 404:
+            return "Brugeren findes ikke længere";
+        case 409:
+            return "Brugernavn er allerede i brug";
+        case 500:
+            return "Der er sket en fejl på serveren. Prøv igen senere";
+        default:
+            return "Brugeren kunne ikke gemmes";
+    }
+}
+
+function deleteErrorMessage (error) {
+    switch (error.status) {
+        case 401:
+        case 403:
+            return "Du har ikke adgang til at slette brugere";
+        case 404:
+            return "Brugeren findes ikke længere";
+        case 500:
+            return "Der er sket en fejl på serveren. Prøv igen senere";
+        default:
+            return "Brugeren kunne ikke slettes";
+    }
 }
 
 function clearMessage () {
@@ -41,7 +89,7 @@ function createUserRow (user) {
     usernameCell.textContent=user.username;
 
     const roleCell = document.createElement("td");
-    roleCell.textContent=user.role;
+    roleCell.textContent=roleLabels[user.role] ?? user.role;
 
     const actionCell = document.createElement("td");
 
@@ -94,7 +142,7 @@ async function handleDelete (user) {
         loadUsers();
     } catch (error) {
         console.error(error);
-        showError("Brugeren blev ikke slettet");
+        showError(deleteErrorMessage(error));
     }
 }
 
@@ -109,7 +157,7 @@ async function loadUsers () {
         renderUsers(users);
     } catch (error) {
         console.error(error);
-        showError("Kunne ikke hente users");
+        showError(loadErrorMessage(error));
     }
 }
 
@@ -150,11 +198,14 @@ async function handleSubmit (event) {
         await loadUsers();
     } catch (error) {
         console.error(error);
-        showError("Brugeren kunne ikke gemmes");
+        showError(saveErrorMessage(error));
     }
 }
 
 function init () {
+    if (requireRole(["ADMIN"]) === false) {
+        return;
+    }
     userForm.addEventListener("submit", handleSubmit);
     formCancel.addEventListener("click", handleCancel);
     loadUsers();
