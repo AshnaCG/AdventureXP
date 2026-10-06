@@ -1,0 +1,76 @@
+/* Styling til reservation.html - bygger ovenpå styleDesignSystem.css */
+
+body {
+    margin: 0;
+}
+
+header {
+    padding: 0 20px;
+}
+
+.page-title {
+    text-align: center;
+    margin: 40px 0 20px;
+    font-size: 36px;
+}
+
+#reservationsForm {
+    max-width: 480px;
+    margin: 0 auto 60px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-top: 6px solid #fec62c;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+}
+
+#reservationsForm label {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 14px 0 6px;
+}
+
+#reservationsForm input,
+#reservationsForm select {
+    font-family: "Nunito", Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+#reservationsForm input:focus,
+#reservationsForm select:focus {
+    outline: none;
+    border-color: #1c98e0;
+}
+
+#reservationsForm button {
+    margin-top: 28px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 12px;
+}
+
+#reservationsForm button:hover {
+    background-color: #f0b400;
+}
+
+#reservationsForm p {
+    margin: 18px 0 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    #reservationsForm {
+        margin: 0 16px 40px;
+        padding: 20px;
+    }
+    .page-title {
+        font-size: 26px;
+    }
+}
