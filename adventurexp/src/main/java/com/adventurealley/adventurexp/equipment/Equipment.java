@@ -24,6 +24,7 @@ public class Equipment {
     public Equipment(){}
 
     public Equipment(String name, boolean availability, State state) {
+
         this.name = name;
         this.availability = availability;
         this.state = state;
