@@ -23,6 +23,9 @@ class ActivityControllerTest {
     @MockitoBean
     ActivityRepository activityRepository;
 
+    @MockitoBean
+    ActivityService activityService;
+
     private final Activity gokart = new Activity("Gokart", "Kør om kap", "/image/Gokart.jpg", 30, 14, 150);
     private final Activity minigolf = new Activity("Minigolf", "18 huller", "/image/minigolf.jpg", 60, 0, 0);
 
