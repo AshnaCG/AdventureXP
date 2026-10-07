@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.time.LocalDateTime;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,7 +46,7 @@ public class ReservationController {
         return reservationService.getAllReservations();
     }
 
-    @GetMapping ("/id")
+    @PutMapping ("/id")
     public Reservation updateReservation(
         @RequestParam Long id, 
         @RequestBody Reservation updatedReservation) {
@@ -52,7 +54,7 @@ public class ReservationController {
         return reservationService.updateReservation(id, updatedReservation);
     }
     
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     public void deleteReservation(@RequestParam Long id) {
         reservationService.deleteReservation(id);
     }
