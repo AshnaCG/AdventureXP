@@ -9,5 +9,4 @@ class AdventurexpApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
