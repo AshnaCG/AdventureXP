@@ -42,3 +42,40 @@ async function loadEquipmentOverview() {
 }
 
 loadEquipmentOverview();
+
+
+const scheduleSection = document.body.querySelector("#schedule-section")
+
+const calendarContainer = scheduleSection.querySelector("#calendar")
+
+const schedulePlan = scheduleSection.querySelector("#calendar-controls")
+
+const weekPlanBtn = schedulePlan.querySelector("#week-view-btn")
+
+const monthPlanBtn = schedulePlan.querySelector("#month-view-btn")
+
+let currentView = "week";
+
+const shifts = [];
+
+let chosenDate = new Date();
+
+async function loadSchedule() {
+
+    const date = chosenDate.toISOString()
+        .split("T")[0];
+
+    let url;
+
+    if (currentView == "week") {
+        url = "/Adventure/schedule/week=?${date}"
+    } else {
+        url = "/Adventure/schedule/month=?${date}"
+    }
+
+    const resppnse = await fetch(url);
+    const schedule = await response.json()
+
+    console.log(schedule)
+
+}
