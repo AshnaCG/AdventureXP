@@ -26,6 +26,7 @@ public class Booking {
     private String customerName;
     private String customerEmail;
     private String customerPhoneNumber;
+    private int hourCount;
 
     @ManyToOne
     private BookingPackage bookingPackage;

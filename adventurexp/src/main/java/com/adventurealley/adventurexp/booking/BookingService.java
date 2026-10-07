@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,7 +19,8 @@ public class BookingService {
     private final ActivityPriceRepository activityPriceRepository;
     private final BookingPackageRepository bookingPackageRepository;
 
-    public BookingService(BookingRepository bookingRepository, ActivityPriceRepository activityPriceRepository, BookingPackageRepository bookingPackageRepository) {
+    public BookingService(BookingRepository bookingRepository, ActivityPriceRepository activityPriceRepository,
+                          BookingPackageRepository bookingPackageRepository) {
 
         this.bookingRepository = bookingRepository;
         this.bookingPackageRepository = bookingPackageRepository;
@@ -42,6 +44,10 @@ public class BookingService {
         validate(booking);
         calculatePrice(booking);
         return bookingRepository.save(booking);
+    }
+
+    public List<BookingDTO> findAllByDate (LocalDate date) {
+        bookingRepository.findByDate(date);
     }
 
     private void validate(Booking booking) {

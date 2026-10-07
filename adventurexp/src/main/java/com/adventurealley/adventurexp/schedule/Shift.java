@@ -1,9 +1,11 @@
 package com.adventurealley.adventurexp.schedule;
 
 import com.adventurealley.adventurexp.employee.Employee;
+import com.adventurealley.adventurexp.reservation.Reservation;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 @Entity
@@ -17,9 +19,14 @@ public class Shift {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
+
     private LocalDateTime shiftStart;
     private LocalDateTime shiftEnd;
     private LocalDate date;
+
+    @OneToMany(mappedBy = "shifts")
+    @JoinColumn(name = "reservations_id")
+    private ArrayList<Reservation> reservations = new ArrayList<>();
     
 
 
