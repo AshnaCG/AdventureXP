@@ -10,7 +10,11 @@ import java.util.ArrayList;
 @Service
 public class DayScheduleService {
 
+        private final ShiftRepository shiftRepository;
 
+        public DayScheduleService(ShiftRepository shiftRepository) {
+                this.shiftRepository=shiftRepository;
+        }
 
 
         public List<DayScheduleDTO> getDaySchedule(List<Shift> shifts){
@@ -57,7 +61,10 @@ public class DayScheduleService {
                 .collect(Collectors.toList());
     } */
 
-                public List<DayScheduleDTO> getWeekSchedule(List<Shift> shifts, LocalDate startOfWeek) {
+                public List<DayScheduleDTO> getWeekSchedule(LocalDate startOfWeek) {
+
+                        List<Shift> shifts = shiftRepository.findByDate(startOfWeek);
+
                         LocalDate endOfWeek = startOfWeek.plusDays(6);
 
 
@@ -88,12 +95,15 @@ public class DayScheduleService {
         return getDaySchedule(weekShifts);
     } */
 
-        public List<DayScheduleDTO> getMonthSchedule(
-        List<Shift> shifts, LocalDate date) {
+        public List<DayScheduleDTO> getMonthSchedule(LocalDate date) {
+
+                List<Shift> shifts = shiftRepository.findAll();
+
                 LocalDate startOfMonth = date.withDayOfMonth(1);
                 LocalDate endOfMonth = date.withDayOfMonth(date.lengthOfMonth());
 
                 List<Shift> monthShifts = new ArrayList<>();
+
                 for (Shift s : shifts){
                         LocalDate shiftDate = s.getDate();
                         if(!shiftDate.isBefore(startOfMonth) && !shiftDate.isAfter(endOfMonth)){

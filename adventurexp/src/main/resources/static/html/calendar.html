@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Medarbejder</title>
+</head>
+
+<body>
+
+<main>
+
+    <h1>Medarbejder</h1>
+
+    <p>
+        Logget ind som
+        <span id="username"></span>
+    </p>
+
+    <a href="admin.html" data-role="ADMIN">
+        Gå til admin
+    </a>
+
+    <button id="logout">
+        Log ud
+    </button>
+
+
+    <section id="schedule-section">
+
+        <h2>Vagtplan</h2>
+
+        <div id="calendar-controls">
+
+            <button id="week-view-btn">
+                Uge
+            </button>
+
+            <button id="month-view-btn">
+                Måned
+            </button>
+
+        </div>
+
+
+        <div id="calendar">
+        </div>
+
+    </section>
+
+
+    <aside id="shift-sidebar">
+
+        <button id="close-sidebar">
+            ×
+        </button>
+
+        <h2>Vagtinformation</h2>
+
+        <p>
+            <strong>Medarbejder:</strong>
+            <span id="shift-employee"></span>
+        </p>
+
+        <p>
+            <strong>Dato:</strong>
+            <span id="shift-date"></span>
+        </p>
+
+        <p>
+            <strong>Start:</strong>
+            <span id="shift-start"></span>
+        </p>
+
+        <p>
+            <strong>Slut:</strong>
+            <span id="shift-end"></span>
+        </p>
+
+
+        <h3>Aktiviteter i vagten</h3>
+
+        <ul id="shift-activities">
+        </ul>
+
+    </aside>
+
+
+    <!-- UDSTYR -->
+
+    <h2>Udstyr</h2>
+
+    <table id="udstyr-tabel">
+
+        <thead>
+        <tr>
+            <th>Aktivitet</th>
+            <th>Udstyr</th>
+            <th>I alt</th>
+            <th>Ledige</th>
+            <th>I stykker</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+
+    </table>
+
+</main>
+
+
+<script type="module" src="../js/employee.js"></script>
+
+</body>
+</html>
