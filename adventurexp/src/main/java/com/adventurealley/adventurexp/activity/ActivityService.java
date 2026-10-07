@@ -3,7 +3,6 @@ package com.adventurealley.adventurexp.activity;
 import com.adventurealley.adventurexp.equipment.Equipment;
 import com.adventurealley.adventurexp.exception.NotFoundException;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
