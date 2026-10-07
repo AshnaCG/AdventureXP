@@ -7,7 +7,9 @@ export function requireRole(allowedRoles) {
     const role = sessionStorage.getItem("role");
     if (!allowedRoles.includes(role)) {
         window.location.href = "login.html";
+        return false;
     }
+    return true;
 }
 
 export function showByRole() {
