@@ -143,4 +143,8 @@ public class Booking {
     public interface BookingRepository extends JpaRepository<Booking, Long> {
         List<Booking> findByStartTimeBetween(LocalDateTime start, LocalDateTime end);
     }
+
+    public void setHourCount(int hourCount) {
+        this.hourCount = hourCount;
+    }
 }

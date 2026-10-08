@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -25,7 +26,7 @@ public class Shift {
     private LocalDate date;
 
     @OneToMany(mappedBy = "shifts")
-    private ArrayList<Reservation> reservations = new ArrayList<>();
+    private List<Reservation> reservations = new ArrayList<>();
     
 
 

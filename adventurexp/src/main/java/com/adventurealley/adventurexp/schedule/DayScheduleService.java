@@ -33,7 +33,7 @@ public class DayScheduleService {
 
                 for (Shift s : shifts) {
                         ShiftDTO shiftDTO = new ShiftDTO(
-                                s.getEmployeeName(),
+                                s.getEmployee() != null ? s.getEmployee().getName() : "",
                                 s.getDate(),
                                 s.getShiftStart().getHour(),
                                 s.getShiftEnd().getHour(),
