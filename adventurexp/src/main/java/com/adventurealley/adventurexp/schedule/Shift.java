@@ -25,7 +25,6 @@ public class Shift {
     private LocalDate date;
 
     @OneToMany(mappedBy = "shifts")
-    @JoinColumn(name = "reservations_id")
     private ArrayList<Reservation> reservations = new ArrayList<>();
     
 
