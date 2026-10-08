@@ -26,7 +26,7 @@ public class ShiftService {
     }
 
     public List<Shift> getShiftsByDate(LocalDate date){
-        return shiftRepository.findByDate(date);
+        return shiftRepository.findByDateBetween(date, date);
     }
     
 }

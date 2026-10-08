@@ -77,7 +77,7 @@ public class DayScheduleService {
                                 startOfWeek,
                                 endOfWeek,
                                 shiftRepository.findByDateBetween(startOfWeek, endOfWeek),
-                                bookingRepository.findByDateBetween(startOfWeek, endOfWeek));
+                                bookingRepository.findByStartTimeBetween(startDateTime, endDateTime));
         }
 
         public List<DayScheduleDTO> getMonthSchedule(LocalDate date) {
@@ -91,6 +91,6 @@ public class DayScheduleService {
                                 startOfMonth,
                                 endOfMonth,
                                 shiftRepository.findByDateBetween(startOfMonth, endOfMonth),
-                                bookingRepository.findByDateBetween(startOfMonth, endOfMonth));
+                                bookingRepository.findByStartTimeBetween(startDateTime, endDateTime));
         }
 }
