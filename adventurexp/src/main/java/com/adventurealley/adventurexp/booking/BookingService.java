@@ -46,10 +46,6 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
-    public List<BookingDTO> findAllByDate (LocalDate date) {
-        bookingRepository.findByDate(date);
-    }
-
     private void validate(Booking booking) {
         if (booking.getParticipants() < 1) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Antal personer skal være mindst 1");

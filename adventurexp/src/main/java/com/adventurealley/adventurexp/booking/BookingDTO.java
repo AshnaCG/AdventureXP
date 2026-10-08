@@ -1,13 +1,14 @@
 package com.adventurealley.adventurexp.booking;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record BookingDTO(
         String guestName,
-        LocalDateTime dateTime,
+        LocalDate date,
         String email,
         String phoneNumber,
-        LocalDateTime startTime,
-        int hourCount
+        int startTime,
+        int bookingDuration
 ) {
 }

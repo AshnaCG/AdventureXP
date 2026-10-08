@@ -5,15 +5,12 @@ import java.time.LocalDateTime;
 
 public record ShiftDTO (
      String employeeName,
-     LocalDateTime shiftStart,
-     LocalDateTime shiftEnd,
+     int shiftStart,
+     int shiftEnd,
      LocalDate date,
-     String guestName,
-     LocalDateTime dateTime,
      String email,
-     String phoneNumber,
-     LocalDateTime bookingStart,
-     int bookingDuration
+     String phoneNumber
+
 ) {
 
 }
