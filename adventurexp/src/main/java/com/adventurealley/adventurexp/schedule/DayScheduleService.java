@@ -1,25 +1,29 @@
 package com.adventurealley.adventurexp.schedule;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.time.LocalDate;
+
+import com.adventurealley.adventurexp.booking.Booking;
+import com.adventurealley.adventurexp.booking.BookingDTO;
+import com.adventurealley.adventurexp.booking.BookingRepository;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 
 @Service
 public class DayScheduleService {
 
         private final ShiftRepository shiftRepository;
+        private final BookingRepository bookingRepository;
 
-        public DayScheduleService(ShiftRepository shiftRepository) {
+        public DayScheduleService(ShiftRepository shiftRepository, BookingRepository bookingRepository) {
                 this.shiftRepository=shiftRepository;
+                this.bookingRepository=bookingRepository;
         }
 
 
-        public List<DayScheduleDTO> getDaySchedule(List<Shift> shifts){
+        public List<DayScheduleDTO> getDaySchedule(List<Shift> shifts, List<Booking> bookings){
 
-                Map<LocalDate, List<ShiftDTO>> dayShifts = new HashMap<>();
+                Map<LocalDate, List<ShiftDTO>> dayShifts = new TreeMap<>();
+                Map<LocalDate, List<BookingDTO>> dayBookings = new TreeMap<>();
 
 
                 for(Shift s : shifts){
