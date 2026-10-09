@@ -85,3 +85,9 @@ h1 {
     color: #1a5fb4;
     text-decoration: none;
 }
+
+.page-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2.5rem 60px;
+}
