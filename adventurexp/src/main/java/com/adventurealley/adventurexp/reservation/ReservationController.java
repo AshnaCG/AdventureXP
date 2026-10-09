@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.time.LocalDateTime;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
 
 @RestController
 @RequestMapping("/adventure/reservation")
@@ -38,4 +43,36 @@ public class ReservationController {
         Reservation saved = reservationService.createReservation(reservation);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved.getId());
     }
+
+    @GetMapping
+    public List<Reservation> getAllReservations() {
+        return reservationService.getAllReservations();
+    }
+
+    @PutMapping ("/id")
+    public Reservation updateReservation(
+        @RequestParam Long id, 
+        @RequestBody Reservation updatedReservation) {
+
+        return reservationService.updateReservation(id, updatedReservation);
+    }
+    
+    @DeleteMapping("/delete")
+    public void deleteReservation(@RequestParam Long id) {
+        reservationService.deleteReservation(id);
+    }
+
+    @GetMapping ("/activity")
+    public List<Reservation> filterByActivity(
+        @RequestParam String activityName) {
+
+        return reservationService.filterByActivity(activityName);
+    }
+
+@GetMapping("/test2")
+public String test2() {
+    return "test2";
+}
+
+
 }
