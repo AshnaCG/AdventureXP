@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkter - Adventure Alley</title>
+    <link rel="stylesheet" href="../css/indexCSS.css">
+    <link rel="stylesheet" href="../css/productsCSS.css">
+</head>
+<body>
+
+<header class="site-header">
+    <a href="index.html" class="logo">Adventure Alley</a>
+    <nav class="main-nav">
+        <a href="index.html" class="active">Forside</a>
+        <a href="activities.html">Aktiviteter</a>
+        <a href="reservation.html">Reservér</a>
+        <a href="admin.html" class="nav-link" data-role="ADMIN">Admin</a>
+        <a href="login.html" class="nav-login">Log ind</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero hero-products">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-label">OPLEVELSER FOR HELE FAMILIEN</span>
+            <h1>Snacks eller tøj til eventyr?</h1>
+            <p>Se vores liste af tilgængelige varer</p>
+        </div>
+
+        <aside class="product-menu">
+            <h2 class="product-menu-title">Menu</h2>
+            <p id="product-status" class="product-status" hidden></p>
+            <div id="product-list"></div>
+        </aside>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-col">
+        <h3>Adventure Alley</h3>
+        <p>Oplevelsescenter med aktiviteter for børn, voksne og virksomheder.</p>
+    </div>
+    <div class="footer-col">
+        <h3>Åbningstider</h3>
+        <p>Man–fre: 10–22</p>
+        <p>Lør–søn: 9–23</p>
+    </div>
+    <div class="footer-col">
+        <h3>Kontakt</h3>
+        <p>Adresse: København</p>
+        <p>Telefon: 12 34 56 78</p>
+        <p>E-mail: adventure@alley.dk</p>
+    </div>
+</footer>
+
+<script type="module" src="../js/products.js"></script>
+</body>
+</html>

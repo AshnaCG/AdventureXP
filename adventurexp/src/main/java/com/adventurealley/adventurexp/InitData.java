@@ -10,6 +10,10 @@ import com.adventurealley.adventurexp.booking.BookingPackageRepository;
 import com.adventurealley.adventurexp.equipment.Equipment;
 import com.adventurealley.adventurexp.equipment.EquipmentRepository;
 import com.adventurealley.adventurexp.equipment.State;
+import com.adventurealley.adventurexp.product.Product;
+import com.adventurealley.adventurexp.product.ProductCategory;
+import com.adventurealley.adventurexp.product.ProductCategoryRepository;
+import com.adventurealley.adventurexp.product.ProductRepository;
 import com.adventurealley.adventurexp.login.Role;
 import com.adventurealley.adventurexp.user.User;
 import com.adventurealley.adventurexp.user.UserRepository;
@@ -29,16 +33,23 @@ public class InitData implements CommandLineRunner {
     private final ActivityPriceRepository activityPriceRepository;
     private final BookingPackageRepository bookingPackageRepository;
 
+    // Produkter
+    private final ProductCategoryRepository productCategoryRepository;
+    private final ProductRepository productRepository;
+
     public InitData(UserRepository userRepository,
                     ActivityRepository activityRepository,
                     EquipmentRepository equipmentRepository,
                     ActivityPriceRepository activityPriceRepository,
-                    BookingPackageRepository bookingPackageRepository) {
+                    BookingPackageRepository bookingPackageRepository,
+                    ProductCategoryRepository productCategoryRepository, ProductRepository productRepository) {
         this.userRepository = userRepository;
         this.activityRepository = activityRepository;
         this.equipmentRepository = equipmentRepository;
         this.activityPriceRepository = activityPriceRepository;
         this.bookingPackageRepository = bookingPackageRepository;
+        this.productCategoryRepository = productCategoryRepository;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -46,6 +57,7 @@ public class InitData implements CommandLineRunner {
         createUsers();
         createActivitiesWithEquipment();
         createPricesAndPackages(); // Nyt: booking
+        createProducts(); //
     }
 
     private void createUsers() {
@@ -119,4 +131,27 @@ public class InitData implements CommandLineRunner {
         }
         return items;
     }
+
+    private void createProducts() {
+        if (productCategoryRepository.count() > 0) {
+            return;
+        }
+
+        // Sætter kategorierne "sodavand", "slik" og tøj op
+        ProductCategory sodavand = productCategoryRepository.save(new ProductCategory("Sodavand"));
+        ProductCategory slik = productCategoryRepository.save(new ProductCategory("Slik"));
+        ProductCategory toej = productCategoryRepository.save(new ProductCategory("Tøj"));
+
+        // Tilføjer produkter til databasen
+        productRepository.saveAll(List.of(
+                new Product(null, "Cola", "0,5 l", 20, sodavand),
+                new Product(null, "Fanta", "0,5 l", 20, sodavand),
+                new Product(null, "Vand", "0,5 l", 15, sodavand),
+                new Product(null, "Vingummi", "Pose, 100 g", 15, slik),
+                new Product(null, "Chokolade", "Mælkechokolade, 50 g", 12, slik),
+                new Product(null, "T-shirt", "Adventure Alley, forskellige størrelser", 150, toej),
+                new Product(null, "Kasket", "Adventure Alley", 100, toej)
+        ));
+    }
+
 }
