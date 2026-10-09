@@ -66,8 +66,9 @@ h1 {
 
 .badge {
     position: absolute;
-    top: -2.6rem;
-    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1.1rem;
     background: #f5c518;
     color: #000;
     font-weight: bold;

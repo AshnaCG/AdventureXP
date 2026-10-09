@@ -21,6 +21,10 @@ public class ReservationDTOTest {
         ActivityRepository activityRepository = mock(ActivityRepository.class);
         when(activityRepository.findByNameIgnoreCase("GOKART"))
                 .thenReturn(Optional.of(new Activity("Gokart", "Kør om kap", "/image/Gokart.jpg", 30, 14, 150)));
+
+        when(service.createReservation(any(Reservation.class)))
+                .thenReturn(new Reservation());
+
         ReservationController controller = new ReservationController(service, activityRepository);
 
         ReservationDTO dto = new ReservationDTO(

@@ -2,22 +2,34 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <meta name="Viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureXP - Log ind</title>
+    <link rel="stylesheet" href="../css/loginCSS.css">
 </head>
 
 <body>
-<main>
-    <h1>Login</h1>
-    <form class="login-form">
-        <p id="login-error" hidden></p>
-        <label>Brugernavn</label>
-        <input type="text" name="username" required>
+<header class="site-header">
+    <a href="index.html" class="logo">Adventure Alley</a>
+    <a href="index.html" class="back-link">← Til forsiden</a>
+</header>
 
-        <label>Adgangskode</label>
-        <input type="password" name="password" required>
-            <button type="submit">Login</button>
-    </form>
+<main class="page-content">
+    <div class="login-box">
+        <span class="label">MEDARBEJDER</span>
+        <h1>Log ind</h1>
+
+        <form class="login-form">
+            <p id="login-error" hidden></p>
+
+            <label for="username">Brugernavn</label>
+            <input type="text" id="username" name="username" autocomplete="username" required>
+
+            <label for="password">Adgangskode</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required>
+
+            <button type="submit" class="login-button">LOG IND</button>
+        </form>
+    </div>
 </main>
 
 <script type="module" src="../js/login.js"></script>

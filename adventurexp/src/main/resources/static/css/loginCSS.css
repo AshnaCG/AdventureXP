@@ -1,0 +1,134 @@
+/* Login – bygger på stilen fra detailsActivity (fakta-boks og BOOK-knap) */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6f8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header – samme som forsiden */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background-color: #0d1b2a;
+    border-bottom: 5px solid #fec62c;
+}
+
+.logo {
+    color: #fec62c;
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.back-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    color: #fec62c;
+}
+
+/* Indhold */
+.page-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+}
+
+/* Login-boks – samme look som .fact-box på aktivitetsdetaljer */
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    background-color: #ffffff;
+    border: 2px solid #000;
+    border-top: 6px solid #f5c518;
+    padding: 2rem;
+}
+
+.label {
+    color: #1a5fb4;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.login-box h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin: 0.3rem 0 1.5rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin: 1rem 0 0.4rem;
+}
+
+.login-form input {
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #1a5fb4;
+}
+
+/* Knap – samme som BOOK-knappen */
+.login-button {
+    margin-top: 1.8rem;
+    width: 100%;
+    padding: 1rem;
+    background: #1a5fb4;
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background: #154d93;
+}
+
+#login-error {
+    background-color: #fdecea;
+    color: #b00020;
+    border-left: 4px solid #ff0000;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        padding: 16px 20px;
+    }
+    .logo {
+        font-size: 22px;
+    }
+    .login-box {
+        padding: 1.5rem;
+    }
+}

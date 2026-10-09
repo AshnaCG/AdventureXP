@@ -24,6 +24,7 @@ public class Equipment {
     public Equipment(){}
 
     public Equipment(String name, boolean availability, State state) {
+
         this.name = name;
         this.availability = availability;
         this.state = state;
@@ -49,7 +50,7 @@ public class Equipment {
         this.name = name;
     }
 
-    public boolean isAvailability() {
+    public boolean getAvailability() {
         return availability;
     }
     public void setAvailability(boolean availability) {

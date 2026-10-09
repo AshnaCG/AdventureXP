@@ -1,0 +1,188 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Sørger for at showByRole() stadig kan skule "Gå til admin" */
+[hidden] {
+    display: none !important;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6f8;
+    min-height: 100vh;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background-color: #0d1b2a;
+    border-bottom: 5px solid #fec62c;
+}
+
+.logo {
+    color: #fec62c;
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #ffffff;
+}
+
+.user-info strong {
+    color: #fec62c;
+}
+
+.admin-link {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 3px solid transparent;
+}
+
+.admin-link:hover {
+    border-bottom-color: #1c98e0;
+}
+
+.logout-button {
+    background-color: #1c98e0;
+    color: #ffffff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #ffffff;
+    color: #0d1b2a;
+}
+
+
+
+.page-content{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem;
+}
+
+.label {
+    color: #1a5fb4;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.page-content h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0.3rem 0 0.5rem;
+}
+
+.intro {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+#equipment-error {
+    background-color: #fdecea;
+    color: #b00020;
+    border-left: 4px solid #ff0000;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+
+
+.table-box {
+    background-color: #ffffff;
+    border: 2px solid #000;
+    border-top: 6px solid #f5c518;
+    padding: 1.5rem;
+}
+
+.table-box h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+#equipment-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+#equipment-table th {
+    collapse: #ffffff;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#equipment-table th {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+
+/* Talkolonnerne (I alt, Ledige, I stykker) højrestilles */
+#equipment-table th:nth-child(n+3),
+#equipment-table td:nth-child(n+3) {
+    text-align: right;
+}
+
+/* Ledige i blå, i stykker i rød */
+#equipment-table td:nth-child(4) {
+    color: #1a5fb4;
+    font-weight: bold;
+}
+
+#equipment-table td:nth-child(5) {
+    color: #b00020;
+    font-weight: bold;
+}
+
+#equipment-table tbody tr:nth-child(even) {
+    background-color: #f5f6f8;
+}
+
+#equipment-table tbody tr:hover {
+    background-color: #fff6d6;
+}
+
+
+/* MOBIL */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px 20px;
+    }
+    .user-info {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .page-content {
+        padding: 2rem 1.2rem;
+    }
+    .page-content h1 {
+        font-size: 2.6rem;
+    }
+}

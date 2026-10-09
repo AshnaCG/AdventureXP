@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureXP - Administrer aktiviteter</title>
+    <link rel="stylesheet" href="../css/administrateActivities.css">
+</head>
+<body>
+
+<header class="site-header">
+    <a href="index.html" class="logo">Adventure Alley</a>
+    <div class="user-info">
+        <a href="admin.html" class="nav-link" data-role="ADMIN">Admin</a>
+        <a href="employee.html" class="nav-link">Medarbejderside</a>
+        <span>Logget ind som <strong id="username"></strong></span>
+        <button id="logout" class="logout-button">Log ud</button>
+    </div>
+</header>
+
+<main class="page-content">
+    <span class="label">MEDARBEJDER</span>
+    <h1>Aktiviteter</h1>
+    <p class="intro">Opret nye aktiviteter, eller ret og slet eksisterende – fx aldersgrænser og højdekrav.</p>
+
+    <p id="activity-error" hidden></p>
+    <p id="activity-success" hidden></p>
+
+    <div class="admin-layout">
+        <section class="box">
+            <h2 id="form-title">Opret aktivitet</h2>
+
+            <form id="activity-form">
+                <input type="hidden" id="activity-id">
+
+                <label for="activity-name">Navn</label>
+                <input type="text" id="activity-name" required>
+
+                <label for="activity-description">Beskrivelse</label>
+                <textarea id="activity-description" rows="5" maxlength="1000"></textarea>
+
+                <label for="activity-image">Billede (sti)</label>
+                <input type="text" id="activity-image" placeholder="/image/Gokart.jpg">
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="activity-duration">Varighed (min)</label>
+                        <input type="number" id="activity-duration" min="1" required>
+                    </div>
+                    <div class="field">
+                        <label for="activity-min-age">Min. alder</label>
+                        <input type="number" id="activity-min-age" min="0" required>
+                    </div>
+                    <div class="field">
+                        <label for="activity-min-height">Min. højde (cm)</label>
+                        <input type="number" id="activity-min-height" min="0" step="1" required>
+                    </div>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" id="form-submit" class="primary-button">Opret</button>
+                    <button type="button" id="form-cancel" class="secondary-button" hidden>Annuller</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="box">
+            <h2>Alle aktiviteter</h2>
+            <div class="table-wrapper">
+                <table id="activity-table">
+                    <thead>
+                    <tr>
+                        <th>Navn</th>
+                        <th>Varighed</th>
+                        <th>Min. alder</th>
+                        <th>Min. højde</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="activity-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script type="module" src="../js/activitiesAdmin.js"></script>
+</body>
+</html>
