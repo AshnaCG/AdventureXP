@@ -64,8 +64,6 @@ const monthPlanBtn = schedulePlan.querySelector("#month-view-btn")
 
 let currentView = "week";
 
-const shifts = [];
-
 let chosenDate = new Date();
 
 async function loadSchedule() {
@@ -134,12 +132,14 @@ function getWeek(chosenDate) {
 function createTimeColumn(){
     const timeColumn = document.createElement("div");
 
+    timeColumn.classList.add("time-column");
+
     const headerSpace = document.createElement("div");
     headerSpace.classList.add("day-header-space");
 
     timeColumn.appendChild(headerSpace);
 
-    timeColumn.classList.add("time-column");
+    
 
     for(let hour = openingHour; hour <= closingHour; hour++){
         const timeLabel = document.createElement("div");
@@ -150,7 +150,7 @@ function createTimeColumn(){
 return timeColumn;  
 }
 
-function renderWeek(chosenDate, schedule) {
+function renderWeek(chosenDate) {
 
 
     const week = getWeek(chosenDate);
@@ -181,11 +181,11 @@ function renderWeek(chosenDate, schedule) {
         }
 }
 
-function renderMonth(chosenDate, schedule) {
+function renderMonth(chosenDate) {
 }
 
 
-async function renderCalendar(chosenDate) {
+function renderCalendar(chosenDate) {
 
     calendarContainer.replaceChildren();
 
@@ -195,10 +195,10 @@ async function renderCalendar(chosenDate) {
 
         calendarContainer.appendChild(timeColumn);
 
-        renderWeek(chosenDate, []);
-
-    } else {
-        renderMonth(chosenDate, []);
+        renderWeek(chosenDate);
+    }
+    else{
+        renderMonth(chosenDate);
     }
 }
 /* async function renderCalendar(chosenDate){
