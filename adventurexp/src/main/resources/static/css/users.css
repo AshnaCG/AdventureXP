@@ -1,0 +1,260 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Sørger for at "Annuller" og beskederne kan skjules af users.js */
+[hidden] {
+    display: none !important;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6f8;
+    min-height: 100vh;
+}
+
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background-color: #0d1b2a;
+    border-bottom: 5px solid #fec62c;
+}
+
+.logo {
+    color: #fec62c;
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.back-link {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: #fec62c;
+}
+
+
+.page-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem;
+}
+
+.label {
+    color: #1a5fb4;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.page-content h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0.3rem 0 0.5rem;
+}
+
+.intro {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+
+#user-error,
+#user-success {
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+#user-error {
+    background-color: #fdecea;
+    color: #b00020;
+    border-left: 4px solid #ff0000;
+}
+
+#user-success {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+    border-left: 4px solid #2e7d32;
+}
+
+/* ---------- Layout: formular til venstre, tabel til højre ---------- */
+.users-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 1.8rem;
+    align-items: start;
+}
+
+.box {
+    background-color: #ffffff;
+    border: 2px solid #000;
+    border-top: 6px solid #f5c518;
+    padding: 1.5rem;
+}
+
+.box h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+
+#user-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#user-form label {
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin: 1rem 0 0.4rem;
+}
+
+#user-form input,
+#user-form select {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+#user-form input:focus,
+#user-form select:focus {
+    outline: none;
+    border-color: #1a5fb4;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.8rem;
+}
+
+.primary-button,
+.secondary-button {
+    flex: 1;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: none;
+}
+
+.primary-button {
+    background-color: #1a5fb4;
+    color: #ffffff;
+}
+
+.primary-button:hover {
+    background-color: #154d93;
+}
+
+.secondary-button {
+    background-color: #ffffff;
+    color: #0d1b2a;
+    border: 2px solid #0d1b2a;
+}
+
+.secondary-button:hover {
+    background-color: #0d1b2a;
+    color: #ffffff;
+}
+
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+#user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#user-table th {
+    background-color: #0d1b2a;
+    color: #ffffff;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#user-table td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+#user-table tbody tr:nth-child(even) {
+    background-color: #f5f6f8;
+}
+
+#user-table tbody tr:hover {
+    background-color: #fff6d6;
+}
+
+/* Knapperne i sidste kolonne */
+#user-table td:last-child {
+    text-align: right;
+    white-space: nowrap;
+}
+
+#user-table td button {
+    padding: 0.45rem 0.9rem;
+    margin-left: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+
+#user-table td button:first-child {
+    background-color: #1a5fb4;
+}
+
+#user-table td button:first-child:hover {
+    background-color: #154d93;
+}
+
+
+#user-table td button:last-child {
+    background-color: #c62828;
+}
+
+#user-table td button:last-child:hover {
+    background-color: #8e1c1c;
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 900px) {
+    .users-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px 20px;
+    }
+    .page-content {
+        padding: 2rem 1.2rem;
+    }
+    .page-content h1 {
+        font-size: 2.6rem;
+    }
+}

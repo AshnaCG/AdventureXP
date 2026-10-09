@@ -44,7 +44,7 @@ public class EquipmentService {
             String key = activityName + "|" + e.getName();
             int[] c = counts.computeIfAbsent(key, k -> new int[3]);
             c[0]++;
-            if (e.isAvailability() && e.getState() == State.OK) c[1]++;
+            if (e.getAvailability() && e.getState() == State.OK) c[1]++;
             if (e.getState() == State.BROKEN) c[2]++;
         }
 
@@ -54,5 +54,17 @@ public class EquipmentService {
             result.add(new EquipmentOverviewDTO(parts[0], parts[1], c[0], c[1], c[2]));
         });
         return result;
+    }
+
+    public void update(Long id, Equipment updatedEquipment){
+        Equipment existing = findById(id);
+        existing.setActivity(updatedEquipment.getActivity());
+        existing.setAvailability(updatedEquipment.getAvailability());
+        existing.setId(existing.getId());
+        existing.setName(existing.getName());
+        existing.setState(existing.getState());
+
+        equipmentRepository.save(existing);
+
     }
 }

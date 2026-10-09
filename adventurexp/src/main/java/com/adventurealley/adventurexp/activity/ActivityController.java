@@ -39,6 +39,23 @@ public class ActivityController {
         return ResponseEntity.ok(activityService.create(activity));
 
     }
+    @DeleteMapping("/del/{id}")
+    public ResponseEntity<Activity> deleteById(@PathVariable("id") long id){
+        activityService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/id/{id}")
+    public ResponseEntity<Activity> updateById(@PathVariable ("id") long id,
+                                               @RequestBody Activity activity){
+
+        activityService.update(id,activity);
+        return ResponseEntity.ok(activity);
+
+
+
+
+    }
 
 
 }
