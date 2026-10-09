@@ -1,10 +1,7 @@
-import {requireRole, logOut, showByRole} from "./auth.js";
+import {requireRole, showByRole} from "./auth.js";
 
 requireRole(["EMPLOYEE", "ADMIN"]);
 showByRole();
-
-document.querySelector("#username").textContent = sessionStorage.getItem("username");
-document.querySelector("#logout").addEventListener("click", logOut);
 
 async function loadEquipmentOverview() {
     const tableBody = document.querySelector("#equipment-table tbody");

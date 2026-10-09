@@ -1,4 +1,4 @@
-import {requireRole, logOut, showByRole} from "./auth.js";
+import {requireRole, showByRole} from "./auth.js";
 import {fetchActivities, createActivity, updateActivity, deleteActivity} from "./activityApi.js";
 
 const activityError = document.querySelector("#activity-error");
@@ -131,7 +131,7 @@ function resetForm () {
 
 async function handleDelete (activity) {
     clearMessage();
-    if (!confirm('Er du sikker på, at du vil slette aktiviteten "${activity.name}"?')) {
+    if (!confirm(`Er du sikker på, at du vil slette aktiviteten "${activity.name}"?`)) {
         return;
     }
     try {
@@ -141,7 +141,7 @@ async function handleDelete (activity) {
             resetForm();
         }
         showSuccess("Aktiviteten er slettet");
-        loadActivites();
+        loadActivities();
     } catch (error) {
         console.error(error);
         showError(deleteErrorMessage(error));
@@ -206,9 +206,6 @@ function init () {
         return;
     }
     showByRole();
-
-    document.querySelector("#username").textContent = sessionStorage.getItem("username");
-    document.querySelector("#logout").addEventListener("click", logOut);
 
     activityForm.addEventListener("submit", handleSubmit);
     formCancel.addEventListener("click", handleCancel);
