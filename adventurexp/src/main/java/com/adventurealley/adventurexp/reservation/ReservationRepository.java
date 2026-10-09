@@ -7,4 +7,3 @@ extends JpaRepository<Reservation, Long> {
     
 List<Reservation> findByActivity_Name(String activityName);
 }
- 
