@@ -14,63 +14,6 @@ body {
     min-height: 100vh;
 }
 
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 60px;
-    background-color: #0d1b2a;
-    border-bottom: 5px solid #fec62c;
-}
-
-.logo {
-    color: #fec62c;
-    font-size: 30px;
-    font-weight: 900;
-    text-decoration: none;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    color: #ffffff;
-}
-
-.user-info strong {
-    color: #fec62c;
-}
-
-.admin-link {
-    color: #ffffff;
-    font-weight: bold;
-    text-decoration: none;
-    padding-bottom: 4px;
-    border-bottom: 3px solid transparent;
-}
-
-.admin-link:hover {
-    border-bottom-color: #1c98e0;
-}
-
-.logout-button {
-    background-color: #1c98e0;
-    color: #ffffff;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.logout-button:hover {
-    background-color: #ffffff;
-    color: #0d1b2a;
-}
-
-
-
 .page-content{
     max-width: 1200px;
     margin: 0 auto;
@@ -170,15 +113,6 @@ body {
 
 /* MOBIL */
 @media (max-width: 768px) {
-    .site-header {
-        flex-direction: column;
-        gap: 14px;
-        padding: 16px 20px;
-    }
-    .user-info {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
     .page-content {
         padding: 2rem 1.2rem;
     }

@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdventureXP - Log ind</title>
+    <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/loginCSS.css">
 </head>
-
 <body>
 <header class="site-header">
     <a href="index.html" class="logo">Adventure Alley</a>
-    <a href="index.html" class="back-link">← Til forsiden</a>
+    <nav class="main-nav">
+        <a href="index.html" data-roles="GUEST">Forside</a>
+        <a href="activities.html" data-roles="GUEST">Aktiviteter</a>
+        <a href="reservation.html" data-roles="GUEST">Reservér</a>
+        <a href="manual-booking.html" data-roles="RESERVATION ADMIN" hidden>Reservér</a>
+        <a href="employee.html" data-roles="EMPLOYEE ADMIN" hidden>Medarbejder</a>
+        <a href="administrateActivities.html" data-roles="EMPLOYEE ADMIN" hidden>Administrer aktiviteter</a>
+        <a href="admin.html" data-roles="ADMIN" hidden>Admin</a>
+        <a href="users.html" data-roles="ADMIN" hidden>Brugere</a>
+    </nav>
+    <div class="user-info" hidden>
+        <span>Logget ind som <strong id="header-username"></strong></span>
+        <button id="header-logout" class="logout-button">Log ud</button>
+    </div>
 </header>
 
 <main class="page-content">
@@ -22,10 +35,10 @@
             <p id="login-error" hidden></p>
 
             <label for="username">Brugernavn</label>
-            <input type="text" id="username" name="username" autocomplete="username" required>
+            <input type="text" id="username" name="username" autocomplete="username" required value="Admin">
 
             <label for="password">Adgangskode</label>
-            <input type="password" id="password" name="password" autocomplete="current-password" required>
+            <input type="password" id="password" name="password" autocomplete="current-password" required value="1234">
 
             <button type="submit" class="login-button">LOG IND</button>
         </form>
@@ -33,5 +46,6 @@
 </main>
 
 <script type="module" src="../js/login.js"></script>
+<script type="module" src="../js/header.js"></script>
 </body>
 </html>

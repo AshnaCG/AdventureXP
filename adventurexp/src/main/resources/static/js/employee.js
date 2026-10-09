@@ -3,14 +3,7 @@ import {requireRole, logOut, showByRole} from "./auth.js";
 requireRole(["EMPLOYEE", "ADMIN"]);
 showByRole();
 
-document.querySelector("#username").textContent = sessionStorage.getItem("username");
-document.querySelector("#logout").addEventListener("click", logOut);
-
-
-
-//Equipment overview
-
-
+// Equipment overview
 async function loadEquipmentOverview() {
     const tableBody = document.querySelector("#equipment-table tbody");
 
@@ -139,10 +132,10 @@ function createTimeColumn(){
     for(let hour = openingHour; hour <= closingHour; hour++){
         const timeLabel = document.createElement("div");
         timeLabel.classList.add("time-label");
-        timeLabel.textContent = hour + ":00";   
+        timeLabel.textContent = hour + ":00";
         timeColumn.appendChild(timeLabel);
   }
-return timeColumn;  
+return timeColumn;
 }
 
 function renderWeek(chosenDate, schedule) {

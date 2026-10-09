@@ -13,32 +13,6 @@ body {
     flex-direction: column;
 }
 
-/* Header – samme som forsiden */
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 60px;
-    background-color: #0d1b2a;
-    border-bottom: 5px solid #fec62c;
-}
-
-.logo {
-    color: #fec62c;
-    font-size: 30px;
-    font-weight: 900;
-    text-decoration: none;
-}
-
-.back-link {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.back-link:hover {
-    color: #fec62c;
-}
 
 /* Indhold */
 .page-content {
@@ -122,12 +96,6 @@ body {
 }
 
 @media (max-width: 600px) {
-    .site-header {
-        padding: 16px 20px;
-    }
-    .logo {
-        font-size: 22px;
-    }
     .login-box {
         padding: 1.5rem;
     }
