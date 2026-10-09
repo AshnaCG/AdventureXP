@@ -1,6 +1,7 @@
 package com.adventurealley.adventurexp.booking;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,12 @@ import java.util.List;
         public Booking createManual(@RequestBody Booking booking) {
             return bookingService.createManualBooking(booking);
         }
+
+        @PutMapping ("/{id}")
+        public ResponseEntity<Void> delete(@PathVariable Long id) {
+        bookingService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
     }
 
 

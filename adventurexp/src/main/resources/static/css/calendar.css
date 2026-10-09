@@ -3,6 +3,10 @@
     grid-template-columns: 70px repeat(7, 1fr);
 }
 
+body {
+    background-color: red;
+}
+
 .hour-slot{
     height: 60px;
     border-top: 1px solid #ddd;
@@ -12,5 +16,13 @@
     height: 60px;
 }
 .day-column{
-    border-left: 1px solid black;
+    border-left: 1px solid #ccc;
+}
+.day-column h3{
+    height: 50px;
+    margin: 0;
+}
+
+.day-header-space {
+    height: 50px;
 }

@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -37,6 +36,12 @@ public class BookingService {
         validate(booking);
         calculatePrice(booking);
         return bookingRepository.save(booking);
+    }
+
+      public void delete(Long id) {
+        Booking booking = bookingRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Booking not found: " + id));
+        bookingRepository.delete(booking);
     }
 
     public Booking createManualBooking(Booking booking) {

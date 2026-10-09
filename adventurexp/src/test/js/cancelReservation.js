@@ -1,9 +1,9 @@
 async function cancelReservation(id) {
-    const response = await fetch(`/adventure/reservation/${id}/cancel`,{
+    const response = await fetch(`/adventure/booking/${id}/cancel`,{
         method: 'PUT',
     })
     return response;
-}
+
 
 const cancelForm = document.querySelector('#cancelForm');
 

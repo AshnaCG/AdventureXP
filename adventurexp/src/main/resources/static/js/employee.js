@@ -134,6 +134,11 @@ function getWeek(chosenDate) {
 function createTimeColumn(){
     const timeColumn = document.createElement("div");
 
+    const headerSpace = document.createElement("div");
+    headerSpace.classList.add("day-header-space");
+
+    timeColumn.appendChild(headerSpace);
+
     timeColumn.classList.add("time-column");
 
     for(let hour = openingHour; hour <= closingHour; hour++){
