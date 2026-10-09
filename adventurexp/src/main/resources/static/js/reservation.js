@@ -6,9 +6,8 @@ async function loadActivites() {
 
     activites.forEach(activity => {
         const option = document.createElement("option");
-        option.value = activity.name;
+        option.value = activity.name.toUpperCase();
         option.textContent = activity.name;
-
 
         select.appendChild(option);
     });
@@ -17,9 +16,8 @@ async function loadActivites() {
 loadActivites();
 
 async function createReservation(reservation) {
-    const response = await fetch(`/adventure/reservation`, {
+    const response = await fetch("/adventure/booking/online", {
         method: "POST",
-
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reservation),
     });
@@ -39,11 +37,11 @@ reservationsForm.addEventListener("submit", async (event) => {
 
     const reservation = {
         activity: formData.get("activity"),
-        firstName: formData.get("firstName"),
-        lastName: formData.get("lastName"),
-        email: formData.get("email"),
-        phoneNumber: formData.get("phoneNumber"),
-        dateTime: formData.get("dateTime"),
+        startTime: formData.get("dateTime"),
+        customerName: `${formData.get("firstName")} ${formData.get("lastName")}`,
+        customerEmail: formData.get("email"),
+        customerPhoneNumber: formData.get("phoneNumber"),
+        participants: Number(formData.get("participants")),
     };
     console.log("Sender:", reservation);
 
@@ -51,8 +49,8 @@ reservationsForm.addEventListener("submit", async (event) => {
         const response = await createReservation(reservation);
 
         if (response.ok) {
-            const id = await response.json();
-            message.textContent = `Tak! Dit reservationsnummer er ${id}.`;
+            const booking = await response.json();
+            message.textContent = `Tak! Dit reservationsnummer er ${booking.id}.`;
             message.hidden = false;
             reservationsForm.reset();
         } else {
@@ -66,5 +64,4 @@ reservationsForm.addEventListener("submit", async (event) => {
         message.hidden = false;
         console.log("Kunne ikke kontakte serveren:", error);
     }
-// test
 });
