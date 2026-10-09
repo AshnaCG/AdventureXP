@@ -29,7 +29,7 @@ public class ActivityController {
                 .orElseThrow(() -> new NotFoundException("Activity not found: " + name));
     }
 
-    @GetMapping("/id{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Activity> getById(@PathVariable("id") Long id){
         return ResponseEntity.ok(activityService.findById(id));
     }
