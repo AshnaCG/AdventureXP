@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -91,6 +92,19 @@ public class BookingService {
 
         booking.setTotalPrice(pricePerPerson *booking.getParticipants());
 }
+
+    public Booking cancelBooking(Long id) {
+        Booking booking = bookingRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Booking ikke fundet: " + id));
+
+        if (booking.getStartTime().isBefore(LocalDateTime.now().plusHours(24))) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Reservationen kan ikke aflyses under 24 timer før start");
+        }
+
+        booking.setCancelled(true);
+        return bookingRepository.save(booking);
+    }
 
 }
 

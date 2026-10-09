@@ -17,6 +17,7 @@
         <a href="manual-booking.html" data-roles="RESERVATION ADMIN" hidden>Reservér</a>
         <a href="employee.html" data-roles="EMPLOYEE ADMIN" hidden>Medarbejder</a>
         <a href="administrateActivities.html" data-roles="EMPLOYEE ADMIN" hidden>Administrer aktiviteter</a>
+        <a href="calendar.html" data-roles="ADMIN EMPLOYEE" hidden>Kalender</a>
         <a href="admin.html" data-roles="ADMIN" hidden>Admin</a>
         <a href="users.html" data-roles="ADMIN" hidden>Brugere</a>
         <a href="login.html" class="nav-login" data-roles="GUEST">Log ind</a>
@@ -38,7 +39,10 @@
     </select>
 
     <label for="dateTime">Tidspunkt</label>
-    <input type="datetime-local" id="dateTime" name="dateTime">
+    <input type="datetime-local" id="dateTime" name="dateTime" required>
+
+    <label for="participants">Antal personer</label>
+    <input type="number" id="participants" name="participants" min="1" value="1" required>
 
     <label for="firstName">Fornavn</label>
     <input type="text" id="firstName" name="firstName">
@@ -53,6 +57,8 @@
     <input type="text" id="phoneNumber" name="phoneNumber">
 
     <button type="submit" class="reserve-button">Bekræft reservation</button>
+
+    <p>Vil du aflyse en reservation? <a href="cancelReservation.html">Aflys her</a></p>
 
 </form>
 

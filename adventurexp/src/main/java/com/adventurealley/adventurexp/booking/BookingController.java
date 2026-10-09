@@ -29,6 +29,11 @@ import java.util.List;
         public Booking createManual(@RequestBody Booking booking) {
             return bookingService.createManualBooking(booking);
         }
+
+    @PutMapping("/{id}/cancel")
+    public Booking cancel(@PathVariable Long id) {
+        return bookingService.cancelBooking(id);
+    }
     }
 
 

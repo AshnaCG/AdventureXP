@@ -14,16 +14,16 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-        private Long id;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
-            private BookingType type;
+    private BookingType type;
 
     @Enumerated(EnumType.STRING)
-        private BookingChannel channel;
+    private BookingChannel channel;
 
     @Enumerated(EnumType.STRING)
-        private ActivitiesEnum activity;
+    private ActivitiesEnum activity;
 
     private int participants;
     private LocalDateTime startTime;
@@ -31,6 +31,7 @@ public class Booking {
     private String customerEmail;
     private String customerPhoneNumber;
     private int hourCount;
+    private boolean cancelled;
 
     @ManyToOne
     private BookingPackage bookingPackage;
@@ -88,6 +89,10 @@ public class Booking {
         return totalPrice;
     }
 
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -113,7 +118,7 @@ public class Booking {
     }
 
     public int getHourCount() {
-    return hourCount;
+        return hourCount;
     }
 
     public void setCustomerName(String customerName) {
@@ -138,6 +143,10 @@ public class Booking {
 
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 
     public interface BookingRepository extends JpaRepository<Booking, Long> {
