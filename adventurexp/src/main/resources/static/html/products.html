@@ -12,12 +12,21 @@
 <header class="site-header">
     <a href="index.html" class="logo">Adventure Alley</a>
     <nav class="main-nav">
-        <a href="index.html" class="active">Forside</a>
-        <a href="activities.html">Aktiviteter</a>
-        <a href="reservation.html">Reservér</a>
-        <a href="admin.html" class="nav-link" data-role="ADMIN">Admin</a>
-        <a href="login.html" class="nav-login">Log ind</a>
+        <a href="index.html" data-roles="GUEST">Forside</a>
+        <a href="activities.html" data-roles="GUEST">Aktiviteter</a>
+        <a href="products.html">Varer</a>
+        <a href="reservation.html" data-roles="GUEST">Reservér</a>
+        <a href="manual-booking.html" data-roles="RESERVATION ADMIN" hidden>Reservér</a>
+        <a href="employee.html" data-roles="EMPLOYEE ADMIN" hidden>Medarbejder</a>
+        <a href="administrateActivities.html" data-roles="EMPLOYEE ADMIN" hidden>Administrer aktiviteter</a>
+        <a href="admin.html" data-roles="ADMIN" hidden>Admin</a>
+        <a href="users.html" data-roles="ADMIN" hidden>Brugere</a>
+        <a href="login.html" class="nav-login" data-roles="GUEST">Log ind</a>
     </nav>
+    <div class="user-info" hidden>
+        <span>Logget ind som <strong id="header-username"></strong></span>
+        <button id="header-logout" class="logout-button">Log ud</button>
+    </div>
 </header>
 
 <main>
@@ -55,6 +64,7 @@
     </div>
 </footer>
 
+<script type="module" src="../js/header.js"></script>
 <script type="module" src="../js/products.js"></script>
 </body>
 </html>
