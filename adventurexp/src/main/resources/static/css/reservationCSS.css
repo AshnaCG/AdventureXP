@@ -1,5 +1,4 @@
-/* Styling til reservation.html - bygger ovenpå styleDesignSystem.css
-   og bruger samme farver som forsiden, login og aktivitetssiderne */
+/* Styling til reservation.html og cancelReservation.html */
 
 :root {
     --yellow: #fec62c;
@@ -17,8 +16,6 @@ body {
     color: #000;
 }
 
-
-
 /* ---------- Indhold ---------- */
 .page-title {
     text-align: center;
@@ -27,8 +24,9 @@ body {
     font-weight: 900;
 }
 
-/* Formular-boks - samme look som login og fakta-boksen */
-#reservationsForm {
+/* Formular-boks */
+#reservationsForm,
+#cancelForm {
     max-width: 480px;
     margin: 0 auto 60px;
     padding: 2rem;
@@ -39,14 +37,16 @@ body {
     flex-direction: column;
 }
 
-#reservationsForm label {
+#reservationsForm label,
+#cancelForm label {
     font-weight: bold;
     font-size: 0.95rem;
     margin: 1rem 0 0.4rem;
 }
 
 #reservationsForm input,
-#reservationsForm select {
+#reservationsForm select,
+#cancelForm input {
     font-family: Arial, sans-serif;
     font-size: 1rem;
     padding: 0.75rem;
@@ -56,13 +56,15 @@ body {
 }
 
 #reservationsForm input:focus,
-#reservationsForm select:focus {
+#reservationsForm select:focus,
+#cancelForm input:focus {
     outline: none;
     border-color: var(--blue);
 }
 
-/* Knap - samme blå som BOOK- og login-knappen */
-#reservationsForm .reserve-button {
+/* Knap */
+#reservationsForm .reserve-button,
+#cancelForm .reserve-button {
     margin-top: 1.8rem;
     width: 100%;
     padding: 1rem;
@@ -78,18 +80,21 @@ body {
     cursor: pointer;
 }
 
-#reservationsForm .reserve-button:hover {
+#reservationsForm .reserve-button:hover,
+#cancelForm .reserve-button:hover {
     background: var(--blue-dark);
 }
 
-#reservationsForm p {
+#reservationsForm p,
+#cancelForm p {
     margin: 18px 0 0;
     text-align: center;
     font-weight: bold;
 }
 
 @media (max-width: 600px) {
-    #reservationsForm {
+    #reservationsForm,
+    #cancelForm {
         margin: 0 16px 40px;
         padding: 1.5rem;
     }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aflys reservation</title>
+  <link rel="stylesheet" href="../css/reservationCSS.css">
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">Adventure Alley</a>
+  <nav class="main-nav">
+    <a href="index.html" data-roles="GUEST">Forside</a>
+    <a href="activities.html" data-roles="GUEST">Aktiviteter</a>
+    <a href="reservation.html" data-roles="GUEST">Reservér</a>
+    <a href="manual-booking.html" data-roles="RESERVATION ADMIN" hidden>Reservér</a>
+    <a href="employee.html" data-roles="EMPLOYEE ADMIN" hidden>Medarbejder</a>
+    <a href="administrateActivities.html" data-roles="EMPLOYEE ADMIN" hidden>Administrer aktiviteter</a>
+    <a href="calendar.html" data-roles="ADMIN EMPLOYEE" hidden>Kalender</a>
+    <a href="admin.html" data-roles="ADMIN" hidden>Admin</a>
+    <a href="users.html" data-roles="ADMIN" hidden>Brugere</a>
+    <a href="login.html" class="nav-login" data-roles="GUEST">Log ind</a>
+  </nav>
+  <div class="user-info" hidden>
+    <span>Logget ind som <strong id="header-username"></strong></span>
+    <button id="header-logout" class="logout-button">Log ud</button>
+  </div>
+</header>
+
+<h1 class="page-title">Aflys reservation</h1>
+
+<form id="cancelForm">
+  <label for="reservationId">Reservationsnummer</label>
+  <input type="number" id="reservationId" name="reservationId" min="1" required>
+
+  <button type="submit" class="reserve-button">Aflys reservation</button>
+</form>
+
+<footer class="site-footer">
+  <div class="footer-col">
+    <h3>Adventure Alley</h3>
+    <p>Oplevelsescenter med aktiviteter for børn, voksne og virksomheder.</p>
+  </div>
+  <div class="footer-col">
+    <h3>Åbningstider</h3>
+    <p>Man–fre: 10–22</p>
+    <p>Lør–søn: 9–23</p>
+  </div>
+  <div class="footer-col">
+    <h3>Kontakt</h3>
+    <p>Adresse: København</p>
+    <p>Telefon: 12 34 56 78</p>
+    <p>E-mail: adventure@alley.dk</p>
+  </div>
+</footer>
+
+<script src="../js/cancelReservation.js"></script>
+<script type="module" src="../js/header.js"></script>
+
+</body>
+</html>

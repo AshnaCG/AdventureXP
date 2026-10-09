@@ -1,4 +1,6 @@
-
+async function cancelReservation(id) {
+    return fetch(`/adventure/booking/${id}/cancel`, { method: "PUT" });
+}
 
 
 const role = sessionStorage.getItem("role");
@@ -78,9 +80,37 @@ async function loadBookings() {
             <td>${b.participants}</td>
             <td>${b.packageContents ?? b.activity?.name ?? "-"}</td>
             <td>${b.totalPrice.toLocaleString("da-DK")} kr.</td>
+            <td>${b.cancelled
+        ? "Aflyst"
+        : `<button type="button" class="cancel-button" data-id="${b.id}">Aflys</button>`}</td>
         </tr>
     `).join("");
 }
+
+document.getElementById("booking-liste").addEventListener("click", async (event) => {
+    const button = event.target.closest(".cancel-button");
+    if (!button || !confirm("Vil du aflyse reservationen?")) {
+        return;
+    }
+
+    try {
+        const response = await cancelReservation(button.dataset.id);
+
+        if (response.ok) {
+            besked.textContent = "Reservationen er aflyst.";
+            loadBookings();
+        } else if (response.status === 400) {
+            besked.textContent = "Reservationen kan ikke aflyses, da der er under 24 timer til.";
+        } else if (response.status === 404) {
+            besked.textContent = "Reservationen findes ikke.";
+        } else {
+            besked.textContent = "Aflysningen fejlede. Prøv igen.";
+        }
+    } catch (error) {
+        besked.textContent = "Kunne ikke kontakte serveren.";
+    }
+    besked.hidden = false;
+});
 
 loadPrices();
 loadBookings();
