@@ -5,7 +5,8 @@ import java.time.LocalDate;
 
 public record DayScheduleDTO(
     LocalDate date,
-    List<ShiftDTO> shifts
+    List<ShiftDTO> shifts,
+    List<BookingDTO> bookings
 ) {
 
 }

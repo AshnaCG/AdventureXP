@@ -6,6 +6,11 @@ showByRole();
 document.querySelector("#username").textContent = sessionStorage.getItem("username");
 document.querySelector("#logout").addEventListener("click", logOut);
 
+
+
+//Equipment overview
+
+
 async function loadEquipmentOverview() {
     const tableBody = document.querySelector("#equipment-table tbody");
 
@@ -19,7 +24,7 @@ async function loadEquipmentOverview() {
         }
         const rows = await response.json();
 
-        tableBody.innerHTML = "";
+        tableBody.replaceChildren();
 
         for (const row of rows){
             const tr = document.createElement("tr");
@@ -42,6 +47,9 @@ async function loadEquipmentOverview() {
 }
 
 loadEquipmentOverview();
+
+
+//Calendar
 
 
 const scheduleSection = document.body.querySelector("#schedule-section")
@@ -67,15 +75,135 @@ async function loadSchedule() {
 
     let url;
 
-    if (currentView == "week") {
-        url = "/Adventure/schedule/week=?${date}"
+    if (currentView === "week") {
+        url = `/Adventure/schedule/week?date=${date}`;
     } else {
-        url = "/Adventure/schedule/month=?${date}"
+        url = `/Adventure/schedule/month?date=${date}`;
     }
 
-    const resppnse = await fetch(url);
+    const response = await fetch(url);
     const schedule = await response.json()
 
-    console.log(schedule)
+    return schedule;
 
 }
+
+
+
+const openingHour = 10;
+const closingHour = 22;
+
+function getMonday(chosenDate) {
+
+    const date = new Date(chosenDate);
+
+    const day = date.getDay();
+
+    const difference = day === 0
+        ? -6
+        : 1 - day;
+
+    date.setDate(
+        date.getDate() + difference
+    );
+
+    return date;
+}
+
+
+function getWeek(chosenDate) {
+
+    const monday = getMonday(chosenDate);
+
+    const week = [];
+
+    for (let i = 0; i < 7; i++) {
+
+        const date = new Date(monday);
+
+        date.setDate(
+            monday.getDate() + i
+        );
+
+        week.push(date);
+    }
+
+    return week;
+}
+
+function createTimeColumn(){
+    const timeColumn = document.createElement("div");
+
+    timeColumn.classList.add("time-column");
+
+    for(let hour = openingHour; hour <= closingHour; hour++){
+        const timeLabel = document.createElement("div");
+        timeLabel.classList.add("time-label");
+        timeLabel.textContent = hour + ":00";   
+        timeColumn.appendChild(timeLabel);
+  }
+return timeColumn;  
+}
+
+function renderWeek(chosenDate, schedule) {
+
+
+    const week = getWeek(chosenDate);
+
+    for (const date of week) {
+
+        const dayColumn = document.createElement("div");
+
+        dayColumn.classList.add("day-column");
+
+        const dayHeader = document.createElement("h3");
+
+        dayHeader.textContent = date.toLocaleDateString("da-DK",
+             { weekday: "long", day: "numeric", month: "long" });
+             dayColumn.appendChild(dayHeader);
+
+
+             for (let hour = openingHour; hour <= closingHour; hour++){
+                const hourSlot = document.createElement("div");
+
+                hourSlot.classList.add("hour-slot");
+                dayColumn.appendChild(hourSlot);
+
+
+             }
+
+             calendarContainer.appendChild(dayColumn);
+        }
+}
+
+function renderMonth(chosenDate, schedule) {
+}
+
+async function renderCalendar(chosenDate){
+
+     const schedule = await loadSchedule();
+
+    calendarContainer.replaceChildren();
+    if (currentView === "week"){
+
+        const timeColumn = createTimeColumn();
+
+        calendarContainer.appendChild(timeColumn);
+
+        renderWeek(chosenDate, schedule);
+     } else{
+            renderMonth(chosenDate, schedule);
+        }
+    }
+
+weekPlanBtn.addEventListener("click", function(){
+    currentView = "week";
+    renderCalendar(chosenDate);
+});
+
+monthPlanBtn.addEventListener("click", function(){
+    currentView = "month";
+    renderCalendar(chosenDate);
+});
+
+renderCalendar(chosenDate);
