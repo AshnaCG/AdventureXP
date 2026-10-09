@@ -1,19 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureXP - Admin</title>
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
-<main>
+
+<header class="site-header">
+    <a href="index.html" class="logo">Adventure Alley</a>
+    <div class="user-info">
+        <span>Logget ind som <strong id="username"></strong></span>
+        <button id="logout" class="logout-button">Log ud</button>
+    </div>
+</header>
+
+<main class="page-content">
+    <span class="label">ADMINISTRATION</span>
     <h1>Admin</h1>
-    <p>Logget ind som <span id="username"></span></p>
-    <nav>
-        <a href="employee.html">Medarbejderside</a>
-        <a href="users.html">Administrer brugere</a>
+    <p class="intro">Vælg hvad du vil arbejde med.</p>
+
+    <nav class="admin-cards">
+        <a href="employee.html" class="admin-card">
+            <span class="card-label">MEDARBEJDER</span>
+            <h2>Medarbejderside</h2>
+            <p>Se oversigt over udstyr.</p>
+            <span class="card-link">Åbn</span>
+        </a>
+
+        <a href="users.html" class="admin-card">
+            <span class="card-label">BRUGERE</span>
+            <h2>Administrer brugere</h2>
+            <p>Opret, ret og slet brugere og roller.</p>
+            <span class="card-link">Åbn</span>
+        </a>
     </nav>
-    <button id="logout">Log ud</button>
 </main>
+
 <script type="module" src="../js/admin.js"></script>
 </body>
 </html>

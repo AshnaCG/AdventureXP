@@ -1,0 +1,149 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6f8;
+    min-height: 100vh;
+}
+
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background-color: #0d1b2a;
+    border-bottom: 5px solid #fec62c;
+}
+
+.logo {
+    color: #fec62c;
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #ffffff;
+}
+
+.user-info strong {
+    color: #fec62c;
+}
+
+.logout-button {
+    background-color: #1c98e0;
+    color: #ffffff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #ffffff;
+    color: #0d1b2a;
+}
+
+
+.page-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem;
+}
+
+.label {
+    color: #1a5fb4;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.page-content h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0.3rem 0 0.5rem;
+}
+
+.intro {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+
+.admin-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+}
+
+.admin-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 2px solid #000;
+    border-top: 6px solid #f5c518;
+    padding: 1.5rem;
+    color: inherit;
+    text-decoration: none;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.admin-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+}
+
+.card-label {
+    color: #1a5fb4;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+.admin-card h2 {
+    font-size: 1.6rem;
+    margin: 0.4rem 0 0.6rem;
+}
+
+.admin-card p {
+    flex: 1;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+}
+
+.card-link {
+    align-self: flex-start;
+    background-color: #1a5fb4;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.6rem 1.2rem;
+}
+
+.admin-card:hover .card-link {
+    background-color: #154d93;
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px 20px;
+    }
+    .admin-cards {
+        grid-template-columns: 1fr;
+    }
+    .page-content h1 {
+        font-size: 2.6rem;
+    }
+}

@@ -1,47 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>AdventureXP - Bruger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureXP - Brugere</title>
+    <link rel="stylesheet" href="../css/users.css">
 </head>
 <body>
-    <h1>Brugere</h1>
+
+<header class="site-header">
+    <a href="index.html" class="logo">Adventure Alley</a>
     <a href="admin.html" class="back-link">Tilbage til admin</a>
+</header>
+
+<main class="page-content">
+    <span class="label">ADMINISTRATION</span>
+    <h1>Brugere</h1>
+    <p class="intro">Opret nye brugere eller ret og slet eksisterende.</p>
 
     <p id="user-error" hidden></p>
     <p id="user-success" hidden></p>
 
-    <form id="user-form">
-        <input type="hidden" id="user-id">
+    <div class="users-layout">
+        <section class="box">
+            <h2>Opret / rediger bruger</h2>
 
-        <label for="user-username">Brugernavn</label>
-        <input type="text" id="user-username" name="username" required>
+            <form id="user-form">
+                <input type="hidden" id="user-id">
 
-        <label for="user-password">Adgangskode</label>
-        <input type="password" id="user-password" name="password" placeholder="Lad stå tomt for at beholde den nuværende">
+                <label for="user-username">Brugernavn</label>
+                <input type="text" id="user-username" name="username" required>
 
-        <label for="user-role">Rolle</label>
-        <select id="user-role" name="role">
-            <option value="EMPLOYEE">Medarbejder</option>
-            <option value="ADMIN">Admin</option>
-            <option value="RESERVATION">Reservation</option>
-        </select>
+                <label for="user-password">Adgangskode</label>
+                <input type="password" id="user-password" name="password" placeholder="Lad stå tomt for at beholde den nuværende">
 
-        <button type="submit" id="form-submit">Gem</button>
-        <button type="button" id="form-cancel" hidden>Annuller</button>
-    </form>
+                <label for="user-role">Rolle</label>
+                <select id="user-role" name="role">
+                    <option value="EMPLOYEE">Medarbejder</option>
+                    <option value="ADMIN">Admin</option>
+                    <option value="RESERVATION">Reservation</option>
+                </select>
 
-<table id="user-table">
-    <thead>
-        <tr>
-            <th>Brugernavn</th>
-            <th>Rolle</th>
-            <th></th>
-        </tr>
-    </thead>
+                <div class="form-buttons">
+                    <button type="submit" id="form-submit" class="primary-button">Gem</button>
+                    <button type="button" id="form-cancel" class="secondary-button" hidden>Annuller</button>
+                </div>
+            </form>
+        </section>
 
-    <tbody id="user-table-body"></tbody>
-</table>
+        <section class="box">
+            <h2>Alle brugere</h2>
+            <div class="table-wrapper">
+                <table id="user-table">
+                    <thead>
+                    <tr>
+                        <th>Brugernavn</th>
+                        <th>Rolle</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="user-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
 
 <script type="module" src="../js/users.js"></script>
 </body>

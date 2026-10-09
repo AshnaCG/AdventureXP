@@ -2,26 +2,42 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Medarbejder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdventureXP - Medarbejder</title>
+    <link rel="stylesheet" href="../css/employee.css">
 </head>
 <body>
-<main>
+
+<header class="site-header">
+    <a href="index.html" class="logo">Adventure Alley</a>
+    <div class="user-info">
+        <a href="administrateActivities.html" class="admin-link">Aktiviteter</a>
+        <a href="admin.html" class="admin-link" data-role="ADMIN">Gå til admin</a>
+        <span>Logget ind som <strong id="username"></strong></span>
+        <button id="logout" class="logout-button">Log ud</button>
+    </div>
+</header>
+
+<main class="page-content">
+<!--    <span class="label">MEDARBEJDER</span>-->
     <h1>Medarbejder</h1>
-    <p>Logget ind som <span id="username"></span></p>
-    <a href="admin.html" data-role="ADMIN">Gå til admin</a>
-    <button id="logout">Log ud</button>
+    <p class="intro">Overblik over udstyret til aktiviteterne.</p>
 
     <p id="equipment-error" hidden></p>
 
-    <h2>Udstyr</h2>
-    <table id="equipment-table">
-        <thead>
-        <tr><th>Aktivitet</th><th>Udstyr</th><th>I alt</th><th>Ledige</th><th>I stykker</th></tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-
+    <section class="table-box">
+        <h2>Udstyr</h2>
+        <div class="table-wrapper">
+            <table id="equipment-table">
+                <thead>
+                <tr><th>Aktivitet</th><th>Udstyr</th><th>I alt</th><th>Ledige</th><th>I stykker</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
 </main>
+
 <script type="module" src="../js/employee.js"></script>
 </body>
 </html>
