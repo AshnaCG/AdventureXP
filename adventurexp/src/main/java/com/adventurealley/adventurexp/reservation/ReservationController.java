@@ -5,10 +5,7 @@ import com.adventurealley.adventurexp.activity.ActivityRepository;
 import com.adventurealley.adventurexp.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -18,24 +15,28 @@ public class ReservationController {
 
     private final ReservationService reservationService;
     private final ActivityRepository activityRepository;
+    private final ReservationRepository reservationRepository;
 
-    public ReservationController(ReservationService reservationService, ActivityRepository activityRepository) {
+    public ReservationController(ReservationService reservationService, ActivityRepository activityRepository,
+                                 ReservationRepository reservationRepository) {
         this.reservationService = reservationService;
         this.activityRepository = activityRepository;
+        this.reservationRepository=reservationRepository;
     }
 
     @PostMapping
-    public ResponseEntity<Long> createReservation(@RequestBody ReservationDTO dto) {
-        String fullName = dto.firstName() + " " + dto.lastName();
-        String email = dto.email();
-        String phoneNumber = dto.phoneNumber();
-        Activity activity = activityRepository.findByNameIgnoreCase(dto.activity())
-                .orElseThrow(() -> new NotFoundException("Activity not found: " + dto.activity()));
-        LocalDateTime dateTime = dto.dateTime();
+    public ResponseEntity<Long> createReservation(@RequestParam String guestName,
+                                                  @RequestParam LocalDateTime dateTime,
+                                                  @RequestParam String email,
+                                                  @RequestParam String phoneNumber,
+                                                  @RequestParam Activity activity,
+                                                  @RequestParam LocalDateTime starTime,
+                                                  @RequestParam int hourCount) {
 
-        Reservation reservation = new Reservation(fullName, dateTime, email, phoneNumber, activity);
+        Reservation reservation = new Reservation(guestName, dateTime, email, phoneNumber,
+                activity, starTime, hourCount);
 
-        Reservation saved = reservationService.createReservation(reservation);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved.getId());
+        reservationRepository.save(reservation);
+        return ResponseEntity.status(HttpStatus.CREATED).body(reservation.getId());
     }
 }

@@ -1,8 +1,10 @@
 package com.adventurealley.adventurexp.reservation;
 
 import com.adventurealley.adventurexp.activity.Activity;
+import com.adventurealley.adventurexp.schedule.Shift;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,20 +18,31 @@ public class Reservation {
     private LocalDateTime dateTime;
     private String email;
     private String phoneNumber;
+    private LocalDateTime startTime;
+    private int hourCount;
 
     @ManyToOne
     private Activity activity;
 
+    @ManyToOne
+    private Shift shift;
+
     public Reservation() {
     }
 
-    public Reservation(String guestName, LocalDateTime dateTime, String email, String phoneNumber, Activity activity) {
+    public Reservation(String guestName, LocalDateTime dateTime,
+                       String email, String phoneNumber, Activity activity,
+                       LocalDateTime startTime, int hourCount) {
         this.guestName = guestName;
         this.dateTime = dateTime;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.activity = activity;
+        this.startTime = startTime;
+        this.hourCount=hourCount;
+
     }
+
 
     public Long getId() {
         return id;

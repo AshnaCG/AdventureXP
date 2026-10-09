@@ -5,5 +5,5 @@ import java.time.LocalDate;
 
 public interface ShiftRepository extends JpaRepository<Shift, Long> {
 
-    List<Shift> findByDate(LocalDate date);
+    List<Shift> findByDateBetween(LocalDate startDate, LocalDate endDate);
 }

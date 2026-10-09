@@ -1,9 +1,13 @@
 package com.adventurealley.adventurexp.booking;
 
 import com.adventurealley.adventurexp.activity.ActivitiesEnum;
+
 import jakarta.persistence.*;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Booking {
@@ -26,6 +30,7 @@ public class Booking {
     private String customerName;
     private String customerEmail;
     private String customerPhoneNumber;
+    private int hourCount;
 
     @ManyToOne
     private BookingPackage bookingPackage;
@@ -107,6 +112,10 @@ public class Booking {
         this.startTime = startTime;
     }
 
+    public int getHourCount() {
+    return hourCount;
+    }
+
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
@@ -129,5 +138,13 @@ public class Booking {
 
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public interface BookingRepository extends JpaRepository<Booking, Long> {
+        List<Booking> findByStartTimeBetween(LocalDateTime start, LocalDateTime end);
+    }
+
+    public void setHourCount(int hourCount) {
+        this.hourCount = hourCount;
     }
 }

@@ -1,133 +1,96 @@
 package com.adventurealley.adventurexp.schedule;
 
-import java.util.HashMap;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.time.LocalDate;
+import java.util.TreeMap;
+
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
+import com.adventurealley.adventurexp.booking.Booking;
+import com.adventurealley.adventurexp.booking.BookingDTO;
+import com.adventurealley.adventurexp.booking.BookingRepository;
+import com.adventurealley.adventurexp.reservation.*;
 
 @Service
 public class DayScheduleService {
 
         private final ShiftRepository shiftRepository;
+        private final BookingRepository bookingRepository;
 
-        public DayScheduleService(ShiftRepository shiftRepository) {
-                this.shiftRepository=shiftRepository;
+        public DayScheduleService(ShiftRepository shiftRepository, BookingRepository bookingRepository) {
+                this.shiftRepository = shiftRepository;
+                this.bookingRepository = bookingRepository;
         }
 
+        public List<DayScheduleDTO> getPeriodSchedule(LocalDate startDate, LocalDate endDate, List<Shift> shifts,
+                        List<Booking> bookings) {
 
-        public List<DayScheduleDTO> getDaySchedule(List<Shift> shifts){
+                Map<LocalDate, List<ShiftDTO>> dayShifts = new TreeMap<>();
+                Map<LocalDate, List<BookingDTO>> dayBookings = new TreeMap<>();
 
-                Map<LocalDate, List<ShiftDTO>> dayShifts = new HashMap<>();
-
-
-                for(Shift s : shifts){
-                        LocalDate date =s.getDate();
-
+                for (Shift s : shifts) {
                         ShiftDTO shiftDTO = new ShiftDTO(
-                                s.getEmployeeName(),
-                                s.getShiftStart(),
-                                s.getShiftEnd(),
-                                s.getDate());
+                                s.getEmployee() != null ? s.getEmployee().getName() : "",
+                                s.getDate(),
+                                s.getShiftStart().getHour(),
+                                s.getShiftEnd().getHour(),
+                                s.getEmployee() != null ? s.getEmployee().getEmail() : "",
+                                s.getEmployee() != null ? s.getEmployee().getPhoneNumber() : ""
+                        );
+                        dayShifts.computeIfAbsent(s.getDate(), d -> new ArrayList<>()).add(shiftDTO);
+                }
 
-                                if(!dayShifts.containsKey(date)){
-                                        dayShifts.put(date, new ArrayList<>());
-                                }
-
-                                dayShifts.get(date).add(shiftDTO);
+                for (Booking b : bookings) {
+                        BookingDTO bookingDTO = new BookingDTO(
+                                b.getCustomerName(),
+                                b.getStartTime().toLocalDate(),
+                                b.getStartTime().getHour(),
+                                b.getHourCount(),
+                                b.getCustomerEmail(),
+                                b.getCustomerPhoneNumber());
+                        dayBookings.computeIfAbsent(b.getStartTime().toLocalDate(), d -> new ArrayList<>()).add(bookingDTO);
                 }
 
                 List<DayScheduleDTO> daySchedules = new ArrayList<>();
 
-                for(Map.Entry<LocalDate, List<ShiftDTO>> entry : dayShifts.entrySet()){
-                        DayScheduleDTO dayscheduleDTO = new DayScheduleDTO(entry.getKey(), entry.getValue());
-                        daySchedules.add(dayscheduleDTO);
-        }
-        return daySchedules;
-        }
-
-   /*  public List<DayScheduleDTO> getDaySchedule(List<Shift> shifts){
-
-        
-        Map<LocalDate, List<ShiftDTO>> groupedShifts = shifts.stream()
-                .collect(Collectors.groupingBy(
-                        Shift::getDate,
-                        Collectors.mapping(shift -> new ShiftDTO(shift.getEmployeeName(), shift.getShiftStart(), shift.getShiftEnd(), shift.getDate()), Collectors.toList())
-                ));
-
-        return groupedShifts.entrySet().stream()
-                .map(entry -> new DayScheduleDTO(entry.getKey(), entry.getValue()))
-                .collect(Collectors.toList());
-    } */
-
-                public List<DayScheduleDTO> getWeekSchedule(LocalDate startOfWeek) {
-
-                        List<Shift> shifts = shiftRepository.findByDate(startOfWeek);
-
-                        LocalDate endOfWeek = startOfWeek.plusDays(6);
-
-
-                        List<Shift> weekShifts = new ArrayList<>();
-
-                        for (Shift s : shifts){
-
-                                LocalDate date = s.getDate();
-                                if(!date.isBefore(startOfWeek) && !date.isAfter(endOfWeek)){
-                                        weekShifts.add(s);
-                                }
-                        }
-                        return getDaySchedule(weekShifts);
-             
+                for (LocalDate currentDate = startDate; !currentDate.isAfter(endDate); currentDate = currentDate.plusDays(1)){
+                        daySchedules.add(new DayScheduleDTO(
+                                currentDate,
+                                dayShifts.getOrDefault(currentDate, new ArrayList<>()),
+                                dayBookings.getOrDefault(currentDate, new ArrayList<>())
+                        ));
                 }
 
-   /*  public List<DayScheduleDTO> getWeekSchedule(
-        List<Shift> shifts, LocalDate startOfWeek) {
+                return daySchedules;
+        }
 
-        LocalDate endOfWeek = startOfWeek.plusDays(6);
+        public List<DayScheduleDTO> getWeekSchedule(LocalDate startOfWeek) {
+                LocalDate endOfWeek = startOfWeek.plusDays(6);
 
+                LocalDateTime startDateTime = startOfWeek.atStartOfDay();
+                LocalDateTime endDateTime = endOfWeek.atTime(java.time.LocalTime.MAX);
 
-        List<Shift> weekShifts = shifts.stream()
-                .filter(shift -> !shift.getDate().isBefore(startOfWeek) && !shift.getDate().isAfter(endOfWeek))
-                .toList();
-
-
-        return getDaySchedule(weekShifts);
-    } */
+                return getPeriodSchedule(
+                                startOfWeek,
+                                endOfWeek,
+                                shiftRepository.findByDateBetween(startOfWeek, endOfWeek),
+                                bookingRepository.findByStartTimeBetween(startDateTime, endDateTime));
+        }
 
         public List<DayScheduleDTO> getMonthSchedule(LocalDate date) {
-
-                List<Shift> shifts = shiftRepository.findAll();
 
                 LocalDate startOfMonth = date.withDayOfMonth(1);
                 LocalDate endOfMonth = date.withDayOfMonth(date.lengthOfMonth());
 
-                List<Shift> monthShifts = new ArrayList<>();
-
-                for (Shift s : shifts){
-                        LocalDate shiftDate = s.getDate();
-                        if(!shiftDate.isBefore(startOfMonth) && !shiftDate.isAfter(endOfMonth)){
-                                monthShifts.add(s);
-                        }
-                }
-                return getDaySchedule(monthShifts);
+                LocalDateTime startDateTime = startOfMonth.atStartOfDay();
+                LocalDateTime endDateTime = endOfMonth.atTime(java.time.LocalTime.MAX);
+                return getPeriodSchedule(
+                                startOfMonth,
+                                endOfMonth,
+                                shiftRepository.findByDateBetween(startOfMonth, endOfMonth),
+                                bookingRepository.findByStartTimeBetween(startDateTime, endDateTime));
         }
-
-
-    
- /*    public List<DayScheduleDTO> getMonthSchedule(
-        List<Shift> shifts, LocalDate date) {
-
-    LocalDate startOfMonth = date.withDayOfMonth(1);
-    LocalDate endOfMonth = date.withDayOfMonth(date.lengthOfMonth());
-
-    List<Shift> monthShifts = shifts.stream()
-            .filter(shift ->
-                    !shift.getDate().isBefore(startOfMonth)
-                    && !shift.getDate().isAfter(endOfMonth))
-            .toList();
-
-    return getDaySchedule(monthShifts);
-} */
-
 }
