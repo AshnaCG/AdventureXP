@@ -1,0 +1,16 @@
+#calendar {
+    display: grid;
+    grid-template-columns: 70px repeat(7, 1fr);
+}
+
+.hour-slot{
+    height: 60px;
+    border-top: 1px solid #ddd;
+}
+
+.time-label{
+    height: 60px;
+}
+.day-column{
+    border-left: 1px solid black;
+}

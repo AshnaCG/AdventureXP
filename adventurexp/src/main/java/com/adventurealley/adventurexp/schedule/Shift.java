@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.LocalDate;
 
 
+
 @Entity
 @Table(name = "shift")
 public class Shift {
@@ -16,6 +17,7 @@ public class Shift {
     @ManyToOne 
     @JoinColumn(name = "employee_id")
     private Employee employee;
+
 
     private LocalDateTime shiftStart;
     private LocalDateTime shiftEnd;
