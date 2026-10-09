@@ -38,7 +38,7 @@ public class ActivityService {
     }
 
 
-    public Activity update(Long id, Activity updated){
+    public void update(Long id, Activity updated){
         Activity existing = findById(id);
 
         existing.setName(updated.getName().trim());
@@ -48,7 +48,7 @@ public class ActivityService {
         existing.setMinAge(updated.getMinAge());
         existing.setMinHeight(updated.getMinHeight());
 
-        return activityRepository.save(existing);
+        activityRepository.save(existing);
 
     }
 
