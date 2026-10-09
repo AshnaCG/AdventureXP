@@ -17,55 +17,7 @@ body {
     color: #000;
 }
 
-/* ---------- Header (samme som forsiden) ---------- */
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 60px;
-    background-color: var(--black);
-    color: var(--white);
-    border-bottom: 5px solid var(--yellow);
-}
 
-.logo {
-    color: var(--yellow);
-    font-size: 30px;
-    font-weight: 900;
-    text-decoration: none;
-}
-
-.main-nav {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
-.main-nav a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 17px;
-    padding-bottom: 4px;
-    border-bottom: 3px solid transparent;
-}
-
-.main-nav a:hover,
-.main-nav a.active {
-    border-bottom-color: #1c98e0;
-}
-
-.main-nav .nav-login {
-    background-color: #1c98e0;
-    padding: 8px 20px;
-    border-radius: 8px;
-    border-bottom: none;
-}
-
-.main-nav .nav-login:hover {
-    background-color: var(--white);
-    color: var(--black);
-}
 
 /* ---------- Indhold ---------- */
 .page-title {
@@ -134,19 +86,6 @@ body {
     margin: 18px 0 0;
     text-align: center;
     font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    .site-header {
-        flex-direction: column;
-        gap: 14px;
-        padding: 16px 20px;
-    }
-    .main-nav {
-        gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
 }
 
 @media (max-width: 600px) {
