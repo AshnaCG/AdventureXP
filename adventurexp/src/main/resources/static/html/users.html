@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdventureXP - Brugere</title>
     <link rel="stylesheet" href="../css/users.css">
+    <link rel="stylesheet" href="../css/global.css">
 </head>
 <body>
 
 <header class="site-header">
     <a href="index.html" class="logo">Adventure Alley</a>
-    <a href="admin.html" class="back-link">Tilbage til admin</a>
+    <nav class="main-nav">
+        <a href="index.html" data-roles="GUEST">Forside</a>
+        <a href="activities.html" data-roles="GUEST">Aktiviteter</a>
+        <a href="reservation.html" data-roles="GUEST">Reservér</a>
+        <a href="manual-booking.html" data-roles="RESERVATION ADMIN" hidden>Reservér</a>
+        <a href="employee.html" data-roles="EMPLOYEE ADMIN" hidden>Medarbejder</a>
+        <a href="administrateActivities.html" data-roles="EMPLOYEE ADMIN" hidden>Administrer aktiviteter</a>
+        <a href="admin.html" data-roles="ADMIN" hidden>Admin</a>
+        <a href="users.html" data-roles="ADMIN" hidden>Brugere</a>
+        <a href="login.html" class="nav-login" data-roles="GUEST">Log ind</a>
+    </nav>
+    <div class="user-info" hidden>
+        <span>Logget ind som <strong id="header-username"></strong></span>
+        <button id="header-logout" class="logout-button">Log ud</button>
+    </div>
 </header>
 
 <main class="page-content">
@@ -67,5 +82,6 @@
 </main>
 
 <script type="module" src="../js/users.js"></script>
+<script type="module" src="../js/header.js"></script>
 </body>
 </html>

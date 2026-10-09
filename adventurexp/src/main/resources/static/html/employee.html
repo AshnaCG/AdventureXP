@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdventureXP - Medarbejder</title>
     <link rel="stylesheet" href="../css/employee.css">
+    <link rel="stylesheet" href="../css/global.css">
 </head>
 <body>
 
 <header class="site-header">
     <a href="index.html" class="logo">Adventure Alley</a>
-    <div class="user-info">
-        <a href="administrateActivities.html" class="admin-link">Aktiviteter</a>
-        <a href="admin.html" class="admin-link" data-role="ADMIN">Gå til admin</a>
-        <span>Logget ind som <strong id="username"></strong></span>
-        <button id="logout" class="logout-button">Log ud</button>
+    <nav class="main-nav">
+        <a href="index.html" data-roles="GUEST">Forside</a>
+        <a href="activities.html" data-roles="GUEST">Aktiviteter</a>
+        <a href="reservation.html" data-roles="GUEST">Reservér</a>
+        <a href="manual-booking.html" data-roles="RESERVATION ADMIN" hidden>Reservér</a>
+        <a href="employee.html" data-roles="EMPLOYEE ADMIN" hidden>Medarbejder</a>
+        <a href="administrateActivities.html" data-roles="EMPLOYEE ADMIN" hidden>Administrer aktiviteter</a>
+        <a href="admin.html" data-roles="ADMIN" hidden>Admin</a>
+        <a href="users.html" data-roles="ADMIN" hidden>Brugere</a>
+        <a href="login.html" class="nav-login" data-roles="GUEST">Log ind</a>
+    </nav>
+    <div class="user-info" hidden>
+        <span>Logget ind som <strong id="header-username"></strong></span>
+        <button id="header-logout" class="logout-button">Log ud</button>
     </div>
 </header>
 
@@ -39,5 +49,6 @@
 </main>
 
 <script type="module" src="../js/employee.js"></script>
+<script type="module" src="../js/header.js"></script>
 </body>
 </html>
