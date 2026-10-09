@@ -1,6 +1,6 @@
 #calendar {
     display: grid;
-    grid-template-columns: 70px repeat(7, 1fr);
+    grid-template-columns: 70px repeat(7, 1fr);E
 }
 
 body {

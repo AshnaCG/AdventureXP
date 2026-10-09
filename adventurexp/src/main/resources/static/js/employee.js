@@ -184,7 +184,24 @@ function renderWeek(chosenDate, schedule) {
 function renderMonth(chosenDate, schedule) {
 }
 
-async function renderCalendar(chosenDate){
+
+async function renderCalendar(chosenDate) {
+
+    calendarContainer.replaceChildren();
+
+    if (currentView === "week") {
+
+        const timeColumn = createTimeColumn();
+
+        calendarContainer.appendChild(timeColumn);
+
+        renderWeek(chosenDate, []);
+
+    } else {
+        renderMonth(chosenDate, []);
+    }
+}
+/* async function renderCalendar(chosenDate){
 
      const schedule = await loadSchedule();
 
@@ -199,7 +216,7 @@ async function renderCalendar(chosenDate){
      } else{
             renderMonth(chosenDate, schedule);
         }
-    }
+    } */
 
 weekPlanBtn.addEventListener("click", function(){
     currentView = "week";
