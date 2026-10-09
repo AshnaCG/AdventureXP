@@ -1,0 +1,110 @@
+.hero-products {
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.hero-products .hero-content {
+    flex: 1;
+}
+
+.product-menu {
+    position: relative;           
+    flex: 0 1 460px;
+    background-color: rgba(13, 27, 42, 0.88);
+    border-top: 5px solid var(--yellow);
+    border-radius: 12px;
+    padding: 28px 32px;
+    color: var(--white);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.product-menu-title {
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--yellow);
+    margin-bottom: 8px;
+}
+
+.menu-category {
+    margin-top: 20px;
+}
+
+.menu-category h3 {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.menu-items {
+    list-style: none;
+}
+
+.menu-item + .menu-item {
+    margin-top: 10px;
+}
+
+/* Format: Navn ........ pris */
+.menu-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.menu-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu-dots {
+    flex: 1;
+    border-bottom: 2px dotted rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
+}
+
+.menu-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--yellow);
+    white-space: nowrap;
+}
+
+.hero .menu-description {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 2px 0 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hero .product-status {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 16px 0 0;
+}
+
+.hero .product-status-error {
+    color: #ffb4a8;
+}
+
+/* ---------- Mobil/smal skærm justering ---------- */
+@media (max-width: 900px) {
+    .hero-products {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 32px;
+    }
+
+    .product-menu {
+        flex: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-menu {
+        padding: 22px 20px;
+    }
+}
