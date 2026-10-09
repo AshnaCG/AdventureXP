@@ -15,31 +15,6 @@ body {
 }
 
 
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 60px;
-    background-color: #0d1b2a;
-    border-bottom: 5px solid #fec62c;
-}
-
-.logo {
-    color: #fec62c;
-    font-size: 30px;
-    font-weight: 900;
-    text-decoration: none;
-}
-
-.back-link {
-    color: #ffffff;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.back-link:hover {
-    color: #fec62c;
-}
 
 
 .page-content {
@@ -246,11 +221,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .site-header {
-        flex-direction: column;
-        gap: 14px;
-        padding: 16px 20px;
-    }
     .page-content {
         padding: 2rem 1.2rem;
     }
